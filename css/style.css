@@ -1,0 +1,1043 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN GENERAL Y VARIABLES
+   ========================================================================== */
+:root {
+    --color-principal: #060d1a;    /* Un azul un poco más profundo para que contraste el neón */
+    --color-secundario: #0b1726;   /* Azul medio para las tarjetas */
+    --color-acento: #38bdf8;       /* Cyan brillante */
+    --color-neon-glow: rgba(56, 189, 248, 0.12); /* El color del destello semitransparente */
+    --color-texto: #f8fafc;        
+    --color-mutado: #94a3b8;       
+    --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: var(--fuente);
+    color: var(--color-texto);
+    line-height: 1.6;
+    background-color: var(--color-principal);
+    
+    /* 🔥 AQUÍ LA MAGIA: Creamos nubes de luz estáticas en diferentes puntos de la pantalla */
+    background-image: 
+        radial-gradient(circle at 80% 20%, var(--color-neon-glow) 0%, transparent 40%),
+        radial-gradient(circle at 15% 50%, rgba(3, 105, 161, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 70% 80%, var(--color-neon-glow) 0%, transparent 40%);
+    background-attachment: fixed; /* Hace que las luces se queden fijas mientras el texto sube */
+    background-size: cover;
+}
+
+section {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--color-acento);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVBAR
+   ========================================================================== */
+header {
+    background-color: rgba(10, 25, 47, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 5%;
+}
+
+.logo img {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.menu a {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: var(--color-acento);
+}
+
+/* ==========================================================================
+   3. SECCIÓN INICIO (HERO)
+   ========================================================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 120px;
+}
+
+.hero-logo {
+    max-height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 1.8rem;
+    color: var(--color-acento);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: var(--color-mutado);
+    font-size: 1.1rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+/* Botones */
+.btn, .btn-sec {
+    padding: 12px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn {
+    background-color: var(--color-acento);
+    color: var(--color-principal);
+}
+
+.btn:hover {
+    background-color: #0284c7;
+    transform: translateY(-2px);
+}
+
+.btn-sec {
+    border: 2px solid var(--color-acento);
+    color: var(--color-acento);
+}
+
+.btn-sec:hover {
+    background-color: rgba(56, 189, 248, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Estadísticas del Hero */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+    padding-top: 30px;
+}
+
+.hero-stats h3 {
+    font-size: 2rem;
+    color: var(--color-acento);
+}
+
+.hero-stats span {
+    color: var(--color-mutated);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   SECCIÓN NOSOTROS / SERVICIOS (Tarjetas Estándar)
+   ========================================================================== */
+#nosotros {
+    text-align: center;
+}
+
+#nosotros h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#nosotros p {
+    color: var(--color-mutado);
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: rgba(11, 23, 38, 0.6); /* Transparente para nubes de luz */
+    backdrop-filter: blur(4px);              /* Efecto vidrio esmerilado */
+    padding: 35px 25px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15); /* Brillo cyan */
+    border-color: var(--color-acento);
+}
+
+.card .icono {
+    font-size: 2.5rem;
+    color: var(--color-acento);
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.3));
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: var(--color-texto);
+    transition: color 0.3s ease;
+}
+
+.card p {
+    color: var(--color-mutado);
+    font-size: 0.95rem;
+}
+
+.card:hover .icono {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 12px var(--color-acento));
+}
+
+.card:hover h3 {
+    color: var(--color-acento);
+}
+
+/* ==========================================================================
+   NUEVO DISEÑO DE PESTAÑAS (TABS) PARA SOLUCIONES ESPECIALIZADAS
+   ========================================================================== */
+.subtitulo-seccion {
+    text-align: center;
+    color: var(--color-mutado);
+    margin-top: -20px;
+    margin-bottom: 40px;
+    font-size: 1rem;
+}
+
+.soluciones-wrapper {
+    display: grid;
+    grid-template-columns: 320px 1fr; /* Menú izquierdo y contenido derecho */
+    gap: 30px;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Menú lateral de botones */
+.soluciones-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tab-btn {
+    background-color: rgba(11, 23, 38, 0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--color-mutado);
+    padding: 16px 20px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    font-family: var(--fuente);
+}
+
+.tab-btn i {
+    font-size: 1.1rem;
+    color: var(--color-mutado);
+    width: 20px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.tab-btn:hover {
+    background-color: rgba(11, 23, 38, 0.7);
+    color: var(--color-texto);
+}
+
+/* Botón activo seleccionado */
+.tab-btn.active {
+    background-color: rgba(11, 23, 38, 0.8);
+    border-color: var(--color-acento);
+    color: var(--color-acento);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+.tab-btn.active i {
+    color: var(--color-acento);
+}
+
+/* Caja de contenido (Derecha) */
+.soluciones-contenido-box {
+    background-color: rgba(11, 23, 38, 0.6);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 40px;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.tab-contenido {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tab-contenido.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.tab-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.tab-texto h3 {
+    font-size: 1.6rem;
+    color: var(--color-texto);
+    margin-bottom: 15px;
+}
+
+.tab-texto p {
+    color: var(--color-mutado);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tab-beneficios {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+}
+
+.tab-beneficios li {
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tab-beneficios li i {
+    color: #10b981; /* Tilde verde */
+    font-size: 0.95rem;
+}
+
+.tab-imagen {
+    width: 100%;
+    height: 260px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tab-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* RESPONSIVE: Celulares y Tablets */
+@media (max-width: 900px) {
+    .soluciones-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .soluciones-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .tab-btn {
+        white-space: nowrap;
+        padding: 12px 18px;
+    }
+    .tab-grid {
+        grid-template-columns: 1fr;
+    }
+    .soluciones-contenido-box {
+        padding: 25px;
+        min-height: auto;
+    }
+    .tab-imagen {
+        order: -1;
+        height: 180px;
+    }
+}
+
+/* ==========================================================================
+   5. SECCIÓN ESTADÍSTICAS INTERMEDIAS
+   ========================================================================== */
+.estadisticas {
+    background-color: var(--color-secundario);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px 5%;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.stat h2 {
+    font-size: 2.5rem;
+    color: var(--color-acento);
+}
+
+/* ==========================================================================
+   6. GRID DE TECNOLOGÍAS
+   ========================================================================== */
+.tecnologias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.tech {
+    background-color: var(--color-secundario);
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tech i {
+    color: var(--color-acento);
+    margin-right: 8px;
+}
+
+/* ==========================================================================
+   NUEVO CARRUSEL DE PROYECTOS (SLIDER INTERACTIVO)
+   ========================================================================== */
+.carrusel-proyectos-contenedor {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Ventana que recorta lo que se sale del contenedor */
+.carrusel-proyectos-window {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* Contenedor largo que se desplaza */
+.carrusel-proyectos-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+}
+
+/* Tarjeta individual del proyecto (Actualizada con transparencias) */
+.proyecto-card {
+    width: calc(50% - 10px); 
+    flex-shrink: 0;          
+    background-color: rgba(11, 23, 38, 0.6); /* 🔥 Transparente para ver las nubes de luz */
+    backdrop-filter: blur(4px);              /* 🔥 Efecto vidrio esmerilado */
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.03); /* Borde sutil */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* 🔥 EFECTO AL PASAR EL MOUSE POR UN PROYECTO */
+.proyecto-card:hover {
+    border-color: var(--color-acento); /* El borde se ilumina en cyan */
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15); /* Brillo neón abajo */
+}
+
+/* Contenedor de la foto */
+.proyecto-img-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.proyecto-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.proyecto-card:hover .proyecto-img-container img {
+    transform: scale(1.06);
+}
+
+/* Etiqueta flotante sobre la foto (ej: CCTV, Redes) */
+.proyecto-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--color-acento);
+    color: var(--color-principal);
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+/* Textos abajo de la foto */
+.proyecto-detalle {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.proyecto-detalle h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--color-texto);
+}
+
+.proyecto-detalle p {
+    color: var(--color-mutado);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Botones de navegación (Flechas) */
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--color-secundario);
+    border: 2px solid var(--color-acento);
+    color: var(--color-acento);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carrusel-btn:hover {
+    background-color: var(--color-acento);
+    color: var(--color-principal);
+}
+
+.prev-btn { left: -10px; }
+.next-btn { right: -10px; }
+
+/* ADAPTACIÓN PARA CELULARES (Muestra 1 sola tarjeta completa) */
+@media (max-width: 768px) {
+    .carrusel-proyectos-contenedor {
+        padding: 0 20px;
+    }
+    .proyecto-card {
+        width: 100%;       /* 👈 Cambiado de min-width a width */
+        flex-shrink: 0;    /* 👈 Agregado para asegurar que no se achique */
+    }
+    .carrusel-btn {
+        width: 38px;
+        height: 38px;
+    }
+    .prev-btn { left: -5px; }
+    .next-btn { right: -5px; }
+}
+
+/* ==========================================================================
+   8. CONTACTO & FORMULARIO
+   ========================================================================== */
+/* CONTACTO OPTIMIZADO CON TRANSPARENCIAS */
+.contacto-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    background-color: rgba(11, 23, 38, 0.6); /* 🔥 Transparente para las nubes de luz */
+    backdrop-filter: blur(6px);              /* 🔥 Efecto vidrio esmerilado */
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04); /* Borde fino premium */
+}
+
+.contacto-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--color-acento);
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.2));
+}
+
+.contacto-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contacto-info i {
+    color: var(--color-acento);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative; /* Clave para poder posicionar el cartel de éxito encima */
+}
+
+/* Campos de entrada con estilo futurista semitransparente */
+.formulario input, .formulario textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(6, 13, 26, 0.5); /* 🔥 Fondo oscuro sutil y transparente */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--color-texto);
+    border-radius: 4px;
+    outline: none;
+    font-family: var(--fuente);
+    transition: all 0.3s ease;
+}
+
+.formulario input:focus, .formulario textarea:focus {
+    border-color: var(--color-acento);
+    background-color: rgba(6, 13, 26, 0.8);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.15); /* Brillo sutil al escribir */
+}
+
+.formulario textarea {
+    height: 120px;
+    resize: none;
+}
+
+.formulario button {
+    background-color: var(--color-acento);
+    color: var(--color-principal);
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.formulario button:hover {
+    background-color: #0284c7;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); /* Brillo en el botón */
+}
+
+/* ==========================================================================
+   ESTILOS NUEVOS: CARTEL DE EXITO PARA EL FORMULARIO (JS)
+   ========================================================================== */
+.mensaje-exito {
+    background-color: rgba(16, 185, 129, 0.15); /* Verde esmeralda transparente */
+    border: 1px solid #10b981;
+    color: #34d399;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.mensaje-exito.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+footer {
+    background-color: #050c16;
+    text-align: center;
+    padding: 40px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer img {
+    height: 65px;
+    margin: 0 auto 15px;
+    border-radius: 5px;
+}
+
+footer h3 {
+    margin-bottom: 5px;
+}
+
+footer p {
+    color: var(--color-mutado);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   10. BOTÓN FLOTANTE DE WHATSAPP
+   ========================================================================== */
+.whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp:hover {
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   11. DISEÑO RESPONSIVE (CELULARES Y TABLETS)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.4rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .estadisticas {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+/* ==========================================================================
+   NUEVOS ESTILOS: FILTROS, FAQ Y ANIMACIONES
+   ========================================================================== */
+
+/* Filtros de proyectos */
+.filtros-proyectos {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-filtro {
+    background: transparent;
+    border: 2px solid var(--color-acento);
+    color: var(--color-acento);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-filtro.active, .btn-filtro:hover {
+    background-color: var(--color-acento);
+    color: var(--color-principal);
+}
+
+/* Efecto ocultar/mostrar galería */
+.item-galeria {
+    transition: transform 0.4s ease, opacity 0.4s ease, width 0.4s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.item-galeria.hide {
+    opacity: 0;
+    transform: scale(0.8);
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.proyecto {
+    position: relative;
+}
+
+.proyecto-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(10, 25, 47, 0.9));
+    padding: 20px;
+    text-align: center;
+}
+
+/* Acordeón de Preguntas Frecuentes */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background-color: var(--color-secundario);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.faq-pregunta {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s;
+}
+
+.faq-pregunta:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.faq-pregunta h3 {
+    font-size: 1.1rem;
+}
+
+.faq-pregunta i {
+    color: var(--color-acento);
+    transition: transform 0.3s ease;
+}
+
+.faq-respuesta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.faq-respuesta p {
+    padding: 20px;
+    color: var(--color-mutado);
+    font-size: 0.95rem;
+}
+
+/* Clases activas para JS */
+.faq-item.active .faq-pregunta i {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-respuesta {
+    max-height: 200px; /* Permite que la respuesta se despliegue de forma fluida */
+}
+
+/* CLASES PARA ANIMACIÓN AL HACER SCROLL */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ==========================================================================
+   CARRUSEL DE MARCAS AUTOMÁTICO INFINITO
+   ========================================================================== */
+.carrusel-marcas {
+    overflow: hidden; /* Esconde los logos que se salen de la pantalla */
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+    background-color: rgba(23, 42, 69, 0.3); /* Un fondo sutil */
+    border-radius: 8px;
+}
+
+/* Agrega un difuminado elegante en los bordes izquierdo y derecho */
+.carrusel-marcas::before, .carrusel-marcas::after {
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+    pointer-events: none;
+}
+.carrusel-marcas::before {
+    left: 0;
+    top: 0;
+    background: linear-gradient(to right, var(--color-principal), transparent);
+}
+.carrusel-marcas::after {
+    right: 0;
+    top: 0;
+    background: linear-gradient(to left, var(--color-principal), transparent);
+}
+
+/* El contenedor que se mueve */
+.carrusel-track {
+    display: flex;
+    width: calc(200px * 12); /* Ancho de cada logo multiplicado por el total (originales + copia) */
+    animation: scrollMarcas 25s linear infinite;
+}
+
+/* Estilo de cada logo individual */
+.marca-logo {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.marca-logo img {
+    max-height: 45px; /* Controla que todos los logos tengan una altura uniforme */
+    width: auto;
+    filter: grayscale(100%) opacity(60%); /* Estética corporativa: gris y semi-transparente */
+    transition: filter 0.3s ease;
+}
+
+/* Cuando el usuario pasa el mouse, el carrusel se frena y el logo toma color original */
+.carrusel-marcas:hover .carrusel-track {
+    animation-play-state: paused;
+}
+
+.marca-logo img:hover {
+    filter: grayscale(0%) opacity(100%);
+}
+
+/* LA MAGIA DE LA ANIMACIÓN: Mueve el track exactamente hasta la mitad */
+@keyframes scrollMarcas {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-200px * 6)); /* Se desplaza el ancho de los 6 logos originales */
+    }
+}
+/* Corrección del bloque de horarios */
+.contacto-horario-block {
+    margin-bottom: 15px;
+}
+
+.horario-titulo {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.horario-lista {
+    list-style: none; /* Quita los puntitos de la lista */
+    padding-left: 26px; /* Alinea el texto justo abajo de donde empieza la palabra "Horario" */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.horario-lista li {
+    font-size: 0.95rem;
+    color: var(--color-texto);
+}
+
+.horario-lista li span {
+    color: var(--color-mutado); /* Deja los días en gris y las horas en blanco para que resalte más */
+    font-weight: 500;
+}
