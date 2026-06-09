@@ -356,6 +356,89 @@
         </div>
     </section>
 
+    
+    <section id="casos-exito">
+    <h2 class="titulo-seccion">Casos de Éxito</h2>
+    <p class="subtitulo-seccion">
+        Algunos ejemplos de soluciones implementadas para empresas e instituciones.
+    </p>
+
+        <div class="casos-grid">
+
+            <div class="caso-card">
+                <div class="caso-icono">
+                    <i class="fas fa-industry"></i>
+                </div>
+
+                <h3>Industria Metalúrgica</h3>
+
+                <div class="caso-item">
+                    <strong>Problema:</strong>
+                    Infraestructura de red obsoleta y baja estabilidad.
+                </div>
+
+                <div class="caso-item">
+                    <strong>Solución:</strong>
+                    Cableado estructurado Cat6, rack principal y enlaces de fibra óptica.
+                </div>
+
+                <div class="caso-item">
+                    <strong>Resultado:</strong>
+                    Red estable, mayor velocidad y reducción de fallas operativas.
+                </div>
+            </div>
+
+            <div class="caso-card">
+                <div class="caso-icono">
+                    <i class="fas fa-building"></i>
+                </div>
+
+                <h3>Empresa Administrativa</h3>
+
+                <div class="caso-item">
+                    <strong>Problema:</strong>
+                    Falta de control de accesos y cobertura WiFi deficiente.
+                </div>
+
+                <div class="caso-item">
+                    <strong>Solución:</strong>
+                    Sistema biométrico, WiFi empresarial y segmentación de red.
+                </div>
+
+                <div class="caso-item">
+                    <strong>Resultado:</strong>
+                    Mayor seguridad y cobertura total en todas las áreas.
+                </div>
+            </div>
+
+            <div class="caso-card">
+                <div class="caso-icono">
+                    <i class="fas fa-school"></i>
+                </div>
+
+                <h3>Institución Educativa</h3>
+
+                <div class="caso-item">
+                    <strong>Problema:</strong>
+                    Necesidad de videovigilancia y monitoreo centralizado.
+                </div>
+
+                <div class="caso-item">
+                    <strong>Solución:</strong>
+                    Instalación de cámaras IP, grabación centralizada y acceso remoto.
+                </div>
+
+                <div class="caso-item">
+                    <strong>Resultado:</strong>
+                    Supervisión integral y mejora en la seguridad institucional.
+                </div>
+            </div>
+
+        </div>
+        ```
+
+    </section>
+
     <!-- FAQ -->
     <section id="faq">
         <h2 class="titulo-seccion">Preguntas Frecuentes</h2>
@@ -433,12 +516,15 @@
                 </p>
             </div>
 
-            <form class="formulario">
-                <input type="text" placeholder="Nombre completo" required>
-                <input type="email" placeholder="Correo electrónico" required>
-                <input type="tel" placeholder="Teléfono de contacto (Ej: 351XXXXXXX)">
-                <textarea placeholder="Escriba aquí los detalles de su consulta técnica o requerimiento..." required></textarea>
-                
+            <form class="formulario" id="contactForm" action="enviar.php" method="POST">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+
+                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+
+                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono de contacto">
+
+                <textarea id="mensaje" name="mensaje" placeholder="Escriba aquí los detalles de su consulta..." required></textarea>
+
                 <button type="submit">Enviar Consulta</button>
             </form>
 
@@ -447,7 +533,7 @@
 
     <!-- FOOTER (Ahora correctamente dentro del body) -->
     <footer>
-        <img src="img/LOGO.png" alt="Grupo TSC">
+        <img src="img/LOGO.png" alt="Logo Grupo TSC">
         <h3>Grupo TSC</h3>
         <p>Tecnología, Seguridad y Conectividad</p>
         <p>© 2026 Grupo TSC. Todos los derechos reservados.</p>
@@ -455,8 +541,11 @@
 
     <!-- Botón flotante de WhatsApp e iconos -->
     <script src="js/script.js"></script>
-    <a href="https://wa.me/3525536785" class="whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/5493525536785?text=Hola%20Grupo%20TSC,%20vi%20su%20sitio%20web%20y%20quisiera%20asesoramiento."
+        class="whatsapp"
+        target="_blank"
+        rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
     </a>
 
 </body>

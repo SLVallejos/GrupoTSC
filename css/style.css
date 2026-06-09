@@ -177,8 +177,7 @@ header {
 }
 
 .hero-stats span {
-    color: var(--color-mutated);
-    font-size: 0.9rem;
+    color: var(--color-mutado);
 }
 
 /* ==========================================================================
