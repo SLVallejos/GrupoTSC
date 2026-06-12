@@ -11,18 +11,26 @@
 <body>
 
     <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="img/LOGO.png" alt="Grupo TSC">
-            </div>
-            <ul class="menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
+    <nav class="navbar">
+
+        <div class="logo">
+            <img src="img/LOGO.png" alt="Grupo TSC">
+        </div>
+
+        <!-- Botón menú móvil -->
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="menu">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+    </nav>
     </header>
 
     <!-- INICIO -->
@@ -233,128 +241,246 @@
     </section>
 
     <!-- SOLUCIONES ESPECIALIZADAS -->
-    <section id="especializados">
-        <h2 class="titulo-seccion">Soluciones Especializadas</h2>
-        <p class="subtitulo-seccion">Ingeniería e infraestructura tecnológica para empresas</p>
+  <section id="especializados">
+    <h2 class="titulo-seccion">Soluciones Especializadas</h2>
+    <p class="subtitulo-seccion">
+        Ingeniería e infraestructura tecnológica para empresas
+    </p>
 
-        <div class="soluciones-wrapper">
-            
-            <div class="soluciones-menu">
-                <button class="tab-btn active" data-tab="cableado">
-                    <i class="fas fa-network-wired"></i> Cableado Estructurado
-                </button>
-                <button class="tab-btn" data-tab="fibra">
-                    <i class="fas fa-route"></i> Fibra Óptica
-                </button>
-                <button class="tab-btn" data-tab="wifi">
-                    <i class="fas fa-wifi"></i> WiFi Empresarial
-                </button>
-                <button class="tab-btn" data-tab="cctv">
-                    <i class="fas fa-video"></i> Sistemas de CCTV
-                </button>
-                <button class="tab-btn" data-tab="acceso">
-                    <i class="fas fa-id-card"></i> Control de Acceso
-                </button>
-                <button class="tab-btn" data-tab="telefonia">
-                    <i class="fas fa-phone-alt"></i> Telefonía IP
-                </button>
-            </div>
+    <div class="soluciones-wrapper">
 
-            <div class="soluciones-contenido-box">
-                
-                <div class="tab-contenido active" id="cableado">
-                    <div class="tab-grid">
-                        <div class="tab-texto">
-                            <h3>Cableado Estructurado Profesional</h3>
-                            <p>Diseño e implementación de infraestructura de red física con estándares internacionales para garantizar la máxima velocidad y estabilidad de tus datos.</p>
-                            <ul class="tab-beneficios">
-                                <li><i class="fas fa-check"></i> Tendidos en Cat 6, 6A y Cat 7 para alto rendimiento.</li>
-                                <li><i class="fas fa-check"></i> Armado, peinado y ordenamiento de Racks/Racks de servidores.</li>
-                                <li><i class="fas fa-check"></i> Certificación oficial de puntos de red.</li>
-                            </ul>
-                        </div>
-                        <div class="tab-imagen"><img src="img/soluciones/cableado-estructurado.png" alt="Cableado Estructurado"></div>
-                    </div>
-                </div>
+        <div class="soluciones-menu">
 
-                <div class="tab-contenido" id="fibra">
-                    <div class="tab-grid">
-                        <div class="tab-texto">
-                            <h3>Enlaces de Fibra Óptica</h3>
-                            <p>Tendido, fusión y certificación de enlaces de alta velocidad para interconectar grandes distancias sin pérdida de señal ni interferencias electromagnéticas.</p>
-                            <ul class="tab-beneficios">
-                                <li><i class="fas fa-check"></i> Fusiones por arco voltaico de alta precisión.</li>
-                                <li><i class="fas fa-check"></i> Soluciones monomodo y multimodo para plantas e industrias.</li>
-                                <li><i class="fas fa-check"></i> Mantenimiento y diagnóstico de enlaces troncales dañados.</li>
-                            </ul>
-                        </div>
-                        <div class="tab-imagen"><img src="img/soluciones/fibra_optica.png" alt="Fibra Óptica"></div>
-                    </div>
-                </div>
+            <button
+                class="tab-btn active"
+                data-tab="cableado"
+                aria-label="Cableado Estructurado">
+                <i class="fas fa-network-wired"></i>
+                Cableado Estructurado
+            </button>
 
-                <div class="tab-contenido" id="wifi">
-                    <div class="tab-grid">
-                        <div class="tab-texto">
-                            <h3>Conectividad WiFi Empresarial</h3>
-                            <p>Instalación de redes inalámbricas corporativas con tecnología Roaming, permitiendo que te muevas por toda la empresa sin perder la conexión jamás.</p>
-                            <ul class="tab-beneficios">
-                                <li><i class="fas fa-check"></i> Access Points de alta densidad (Ubiquiti / Aruba).</li>
-                                <li><i class="fas fa-check"></i> Redes de invitados aisladas y seguras para clientes.</li>
-                                <li><i class="fas fa-check"></i> Mapas de calor para cobertura 100% garantizada sin zonas muertas.</li>
-                            </ul>
-                        </div>
-                        <div class="tab-imagen"><img src="img/soluciones/Wi-Fi.png" alt="WiFi Empresarial"></div>
-                    </div>
-                </div>
+            <button
+                class="tab-btn"
+                data-tab="fibra"
+                aria-label="Fibra Óptica">
+                <i class="fas fa-route"></i>
+                Fibra Óptica
+            </button>
 
-                <div class="tab-contenido" id="cctv">
-                    <div class="tab-grid">
-                        <div class="tab-texto">
-                            <h3>Sistemas de CCTV Avanzados</h3>
-                            <p>Sistemas de videovigilancia IP profesionales diseñados para la supervisión local y remota en tiempo real de empresas, comercios y complejos industriales.</p>
-                            <ul class="tab-beneficios">
-                                <li><i class="fas fa-check"></i> Cámaras de alta resolución con visión nocturna y analíticas.</li>
-                                <li><i class="fas fa-check"></i> Configuración de alertas de movimiento directo al celular.</li>
-                                <li><i class="fas fa-check"></i> Grabación centralizada y almacenamiento redundante y seguro.</li>
-                            </ul>
-                        </div>
-                        <div class="tab-imagen"><img src="img/soluciones/Camaras-CCTV.png" alt="CCTV"></div>
-                    </div>
-                </div>
+            <button
+                class="tab-btn"
+                data-tab="wifi"
+                aria-label="WiFi Empresarial">
+                <i class="fas fa-wifi"></i>
+                WiFi Empresarial
+            </button>
 
-                <div class="tab-contenido" id="acceso">
-                    <div class="tab-grid">
-                        <div class="tab-texto">
-                            <h3>Sistemas de Control de Acceso</h3>
-                            <p>Gestión eficiente y automatizada de los ingresos y egresos del personal a las instalaciones mediante tecnologías biométricas y tarjetas magnéticas.</p>
-                            <ul class="tab-beneficios">
-                                <li><i class="fas fa-check"></i> Terminales de reconocimiento facial, huella dactilar o tarjetas.</li>
-                                <li><i class="fas fa-check"></i> Restricción por horarios y sectores críticos.</li>
-                                <li><i class="fas fa-check"></i> Software de reporte y control de presentismo para administración.</li>
-                            </ul>
-                        </div>
-                        <div class="tab-imagen"><img src="img/soluciones/Control_De_acceso.png" alt="Control de Acceso"></div>
-                    </div>
-                </div>
+            <button
+                class="tab-btn"
+                data-tab="cctv"
+                aria-label="Sistemas de CCTV">
+                <i class="fas fa-video"></i>
+                Sistemas de CCTV
+            </button>
 
-                <div class="tab-contenido" id="telefonia">
-                    <div class="tab-grid">
-                        <div class="tab-texto">
-                            <h3>Centrales de Telefonía IP</h3>
-                            <p>Comunicaciones VoIP modernas que unifican las líneas de tu organización, reducen costos operativos y permiten atender internos desde cualquier parte del mundo.</p>
-                            <ul class="tab-beneficios">
-                                <li><i class="fas fa-check"></i> Centrales virtuales (3CX / Asterisk) adaptables a tu medida.</li>
-                                <li><i class="fas fa-check"></i> Configuración de preatendedores (IVR) y colas de espera profesionales.</li>
-                                <li><i class="fas fa-check"></i> Integración con teléfonos IP físicos y aplicaciones móviles.</li>
-                            </ul>
-                        </div>
-                        <div class="tab-imagen"><img src="img/soluciones/Telefonia-IP.png" alt="Telefonía IP"></div>
-                    </div>
-                </div>
+            <button
+                class="tab-btn"
+                data-tab="acceso"
+                aria-label="Control de Acceso">
+                <i class="fas fa-id-card"></i>
+                Control de Acceso
+            </button>
 
-            </div>
+            <button
+                class="tab-btn"
+                data-tab="telefonia"
+                aria-label="Telefonía IP">
+                <i class="fas fa-phone-alt"></i>
+                Telefonía IP
+            </button>
+
         </div>
-    </section>
+
+        <div class="soluciones-contenido-box">
+
+            <!-- Cableado -->
+            <div class="tab-contenido active" id="cableado">
+                <div class="tab-grid">
+
+                    <div class="tab-texto">
+                        <h3>Cableado Estructurado Profesional</h3>
+
+                        <p>
+                            Diseño e implementación de infraestructura de red física
+                            bajo estándares internacionales para garantizar máxima
+                            velocidad, estabilidad y escalabilidad.
+                        </p>
+
+                        <ul class="tab-beneficios">
+                            <li><i class="fas fa-check"></i> Tendidos Cat 6, Cat 6A y Cat 7.</li>
+                            <li><i class="fas fa-check"></i> Armado y organización profesional de racks.</li>
+                            <li><i class="fas fa-check"></i> Certificación oficial de puntos de red.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-imagen">
+                        <img
+                            src="img/soluciones/cableado-estructurado.png"
+                            alt="Cableado Estructurado Profesional"
+                            loading="lazy">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Fibra -->
+            <div class="tab-contenido" id="fibra">
+                <div class="tab-grid">
+
+                    <div class="tab-texto">
+                        <h3>Enlaces de Fibra Óptica</h3>
+
+                        <p>
+                            Tendido, fusión y certificación de enlaces de alta velocidad
+                            para interconectar edificios, plantas industriales y oficinas.
+                        </p>
+
+                        <ul class="tab-beneficios">
+                            <li><i class="fas fa-check"></i> Fusiones por arco voltaico.</li>
+                            <li><i class="fas fa-check"></i> Soluciones monomodo y multimodo.</li>
+                            <li><i class="fas fa-check"></i> Diagnóstico y reparación de enlaces.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-imagen">
+                        <img
+                            src="img/soluciones/fibra_optica.png"
+                            alt="Instalación de Fibra Óptica"
+                            loading="lazy">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- WiFi -->
+            <div class="tab-contenido" id="wifi">
+                <div class="tab-grid">
+
+                    <div class="tab-texto">
+                        <h3>Conectividad WiFi Empresarial</h3>
+
+                        <p>
+                            Redes inalámbricas corporativas con roaming inteligente,
+                            cobertura total y administración centralizada.
+                        </p>
+
+                        <ul class="tab-beneficios">
+                            <li><i class="fas fa-check"></i> Access Points Ubiquiti y Aruba.</li>
+                            <li><i class="fas fa-check"></i> Redes de invitados seguras.</li>
+                            <li><i class="fas fa-check"></i> Estudios de cobertura y mapas de calor.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-imagen">
+                        <img
+                            src="img/soluciones/Wi-Fi.png"
+                            alt="WiFi Empresarial"
+                            loading="lazy">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CCTV -->
+            <div class="tab-contenido" id="cctv">
+                <div class="tab-grid">
+
+                    <div class="tab-texto">
+                        <h3>Sistemas de CCTV Avanzados</h3>
+
+                        <p>
+                            Videovigilancia IP para empresas, industrias, comercios
+                            y complejos corporativos.
+                        </p>
+
+                        <ul class="tab-beneficios">
+                            <li><i class="fas fa-check"></i> Cámaras Full HD y 4K.</li>
+                            <li><i class="fas fa-check"></i> Alertas inteligentes al celular.</li>
+                            <li><i class="fas fa-check"></i> Grabación segura y monitoreo remoto.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-imagen">
+                        <img
+                            src="img/soluciones/Camaras-CCTV.png"
+                            alt="Sistema de CCTV"
+                            loading="lazy">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Acceso -->
+            <div class="tab-contenido" id="acceso">
+                <div class="tab-grid">
+
+                    <div class="tab-texto">
+                        <h3>Control de Acceso</h3>
+
+                        <p>
+                            Soluciones biométricas y electrónicas para controlar
+                            ingresos, egresos y sectores críticos.
+                        </p>
+
+                        <ul class="tab-beneficios">
+                            <li><i class="fas fa-check"></i> Reconocimiento facial y huella.</li>
+                            <li><i class="fas fa-check"></i> Restricción por horarios.</li>
+                            <li><i class="fas fa-check"></i> Reportes y presentismo.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-imagen">
+                        <img
+                            src="img/soluciones/Control_De_acceso.png"
+                            alt="Sistema de Control de Acceso"
+                            loading="lazy">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Telefonía -->
+            <div class="tab-contenido" id="telefonia">
+                <div class="tab-grid">
+
+                    <div class="tab-texto">
+                        <h3>Telefonía IP Corporativa</h3>
+
+                        <p>
+                            Soluciones VoIP modernas para optimizar comunicaciones,
+                            reducir costos y mejorar la atención al cliente.
+                        </p>
+
+                        <ul class="tab-beneficios">
+                            <li><i class="fas fa-check"></i> Centrales 3CX y Asterisk.</li>
+                            <li><i class="fas fa-check"></i> IVR y colas de atención.</li>
+                            <li><i class="fas fa-check"></i> Integración con teléfonos IP y apps móviles.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-imagen">
+                        <img
+                            src="img/soluciones/Telefonia-IP.png"
+                            alt="Telefonía IP Corporativa"
+                            loading="lazy">
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     
     <section id="casos-exito">
@@ -435,7 +561,6 @@
             </div>
 
         </div>
-        ```
 
     </section>
 

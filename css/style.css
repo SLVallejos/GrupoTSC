@@ -1,13 +1,30 @@
 /* ==========================================================================
    1. CONFIGURACIÓN GENERAL Y VARIABLES
    ========================================================================== */
+/* RESET GLOBAL */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 :root {
-    --color-principal: #060d1a;    /* Un azul un poco más profundo para que contraste el neón */
-    --color-secundario: #0b1726;   /* Azul medio para las tarjetas */
-    --color-acento: #38bdf8;       /* Cyan brillante */
-    --color-neon-glow: rgba(56, 189, 248, 0.12); /* El color del destello semitransparente */
-    --color-texto: #f8fafc;        
-    --color-mutado: #94a3b8;       
+    --color-principal: #060d1a;
+    --color-secundario: #0b1726;
+    --color-acento: #38bdf8;
+    --color-neon-glow: rgba(56, 189, 248, 0.12);
+    --color-texto: #f8fafc;
+    --color-mutado: #94a3b8;
+
+    --borde-suave: rgba(255,255,255,.05);
+    --borde-extra-suave: rgba(255,255,255,.03);
+
+    --transicion: all .3s ease;
+
     --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -48,14 +65,19 @@ img {
 /* ==========================================================================
    2. HEADER & NAVBAR
    ========================================================================== */
-header {
-    background-color: rgba(10, 25, 47, 0.95);
+header{
+    background: rgba(6,13,26,.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
+    box-shadow: 0 2px 10px rgba(0,0,0,.3);
 }
 
 .navbar {
@@ -101,16 +123,20 @@ header {
     padding-top: 120px;
 }
 
-.hero-logo {
+.hero-logo{
     max-height: 120px;
     margin: 0 auto 20px;
     border-radius: 10px;
+
+    filter: drop-shadow(0 0 20px rgba(56,189,248,.2));
 }
 
-.hero h1 {
+.hero h1{
     font-size: 3.5rem;
     letter-spacing: 2px;
     margin-bottom: 10px;
+
+    text-shadow: 0 0 20px rgba(56,189,248,.2);
 }
 
 .hero h2 {
@@ -134,12 +160,14 @@ header {
 }
 
 /* Botones */
-.btn, .btn-sec {
+.btn,
+.btn-sec{
     padding: 12px 28px;
-    border-radius: 5px;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
-    transition: all 0.3s ease;
+
+    transition: var(--transicion);
 }
 
 .btn {
@@ -147,9 +175,12 @@ header {
     color: var(--color-principal);
 }
 
-.btn:hover {
-    background-color: #0284c7;
-    transform: translateY(-2px);
+.btn:hover,
+.btn-sec:hover{
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(56,189,248,.25);
 }
 
 .btn-sec {
@@ -327,105 +358,110 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 12px;
     padding: 40px;
-    min-height: 400px;
     display: flex;
     align-items: center;
+    min-height: 400px; /* Escritorio */
 }
+/* CONTENIDO DE LAS PESTAÑAS */
+    .tab-contenido {
+        display: none;
+        width: 100%;
+    }
 
-.tab-contenido {
-    display: none;
-    width: 100%;
-    opacity: 0;
-    transform: translateX(15px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
+    .tab-contenido.active {
+        display: block;
+    }
 
-.tab-contenido.active {
-    display: block;
-    opacity: 1;
-    transform: translateX(0);
-}
+    /* DISTRIBUCIÓN TEXTO + IMAGEN */
+    .tab-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+        align-items: center;
+    }
 
-.tab-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 30px;
-    align-items: center;
-}
+    .tab-texto h3 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: var(--color-texto);
+    }
 
-.tab-texto h3 {
-    font-size: 1.6rem;
-    color: var(--color-texto);
-    margin-bottom: 15px;
-}
+    .tab-texto p {
+        color: var(--color-mutado);
+        margin-bottom: 20px;
+    }
 
-.tab-texto p {
-    color: var(--color-mutado);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
+    .tab-beneficios {
+        list-style: none;
+        padding: 0;
+    }
 
-.tab-beneficios {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 0;
-}
+    .tab-beneficios li {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
 
-.tab-beneficios li {
-    font-size: 0.9rem;
-    color: var(--color-texto);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.tab-beneficios li i {
-    color: #10b981; /* Tilde verde */
-    font-size: 0.95rem;
-}
-
-.tab-imagen {
-    width: 100%;
-    height: 260px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.tab-imagen img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    .tab-beneficios li i {
+        color: #10b981;
+    }
 
 /* RESPONSIVE: Celulares y Tablets */
 @media (max-width: 900px) {
+
     .soluciones-wrapper {
         grid-template-columns: 1fr;
     }
+
     .soluciones-menu {
         flex-direction: row;
         overflow-x: auto;
         padding-bottom: 10px;
         -webkit-overflow-scrolling: touch;
     }
+
     .tab-btn {
         white-space: nowrap;
         padding: 12px 18px;
     }
+
     .tab-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
+
     .soluciones-contenido-box {
         padding: 25px;
         min-height: auto;
     }
+
+    .tab-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    align-items: center;
+    }
+
     .tab-imagen {
-        order: -1;
-        height: 180px;
+    height: 300px;
+    }
+
+    .tab-imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+     .tab-texto h3 {
+        font-size: 1.6rem;
+    }
+
+    .tab-texto p {
+        font-size: 0.95rem;
+    }
+
+    .tab-beneficios li {
+        font-size: 0.9rem;
     }
 }
 
@@ -599,20 +635,58 @@ header {
 .next-btn { right: -10px; }
 
 /* ADAPTACIÓN PARA CELULARES (Muestra 1 sola tarjeta completa) */
-@media (max-width: 768px) {
-    .carrusel-proyectos-contenedor {
+@media (max-width: 768px){
+
+    .navbar{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1{
+        font-size: 2.5rem;
+    }
+
+    .hero h2{
+        font-size: 1.4rem;
+    }
+
+    .hero-stats{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .estadisticas{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .carrusel-proyectos-contenedor{
         padding: 0 20px;
     }
-    .proyecto-card {
-        width: 100%;       /* 👈 Cambiado de min-width a width */
-        flex-shrink: 0;    /* 👈 Agregado para asegurar que no se achique */
+
+    .proyecto-card{
+        width: 100%;
+        flex-shrink: 0;
     }
-    .carrusel-btn {
+
+    .carrusel-btn{
         width: 38px;
         height: 38px;
     }
-    .prev-btn { left: -5px; }
-    .next-btn { right: -5px; }
+
+    .prev-btn{
+        left: -5px;
+    }
+
+    .next-btn{
+        right: -5px;
+    }
 }
 
 /* ==========================================================================
@@ -750,23 +824,51 @@ footer p {
 /* ==========================================================================
    10. BOTÓN FLOTANTE DE WHATSAPP
    ========================================================================== */
-.whatsapp {
+.whatsapp{
     position: fixed;
     bottom: 25px;
     right: 25px;
+
     background-color: #25d366;
+
     color: white;
+
     width: 60px;
     height: 60px;
+
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     font-size: 30px;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+
     z-index: 1000;
+
     text-decoration: none;
-    transition: transform 0.3s ease;
+
+    transition: var(--transicion);
+
+    animation: pulse 2s infinite;
+}
+
+.whatsapp:hover{
+    transform: scale(1.1);
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow: 0 0 0 0 rgba(37,211,102,.5);
+    }
+
+    70%{
+        box-shadow: 0 0 0 15px rgba(37,211,102,0);
+    }
+
+    100%{
+        box-shadow: 0 0 0 0 rgba(37,211,102,0);
+    }
 }
 
 .whatsapp:hover {
@@ -774,98 +876,8 @@ footer p {
 }
 
 /* ==========================================================================
-   11. DISEÑO RESPONSIVE (CELULARES Y TABLETS)
-   ========================================================================== */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero h2 {
-        font-size: 1.4rem;
-    }
-
-    .hero-stats {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .estadisticas {
-        flex-direction: column;
-        gap: 30px;
-    }
-}
-/* ==========================================================================
    NUEVOS ESTILOS: FILTROS, FAQ Y ANIMACIONES
    ========================================================================== */
-
-/* Filtros de proyectos */
-.filtros-proyectos {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.btn-filtro {
-    background: transparent;
-    border: 2px solid var(--color-acento);
-    color: var(--color-acento);
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-filtro.active, .btn-filtro:hover {
-    background-color: var(--color-acento);
-    color: var(--color-principal);
-}
-
-/* Efecto ocultar/mostrar galería */
-.item-galeria {
-    transition: transform 0.4s ease, opacity 0.4s ease, width 0.4s ease;
-    opacity: 1;
-    transform: scale(1);
-}
-
-.item-galeria.hide {
-    opacity: 0;
-    transform: scale(0.8);
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
-
-.proyecto {
-    position: relative;
-}
-
-.proyecto-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(transparent, rgba(10, 25, 47, 0.9));
-    padding: 20px;
-    text-align: center;
-}
-
 /* Acordeón de Preguntas Frecuentes */
 .faq-container {
     max-width: 800px;
@@ -1039,4 +1051,86 @@ footer p {
 .horario-lista li span {
     color: var(--color-mutado); /* Deja los días en gris y las horas en blanco para que resalte más */
     font-weight: 500;
+}
+.menu-toggle{
+    display: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media(max-width:768px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .navbar{
+        flex-direction:row;
+    }
+
+    .menu{
+        position:absolute;
+        top:80px;
+        left:0;
+
+        width:100%;
+
+        background:#0f172a;
+
+        flex-direction:column;
+
+        text-align:center;
+
+        display:none;
+
+        padding:20px 0;
+    }
+
+    .menu.active{
+        display:flex;
+    }
+
+    .menu li{
+        margin:15px 0;
+    }
+
+    .hero h1{
+        font-size:2.5rem;
+    }
+
+    .hero h2{
+        font-size:1.4rem;
+    }
+
+    .hero-stats{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .estadisticas{
+        flex-direction:column;
+        gap:30px;
+    }
+
+    .carrusel-proyectos-contenedor{
+        padding:0 20px;
+    }
+
+    .proyecto-card{
+        width:100%;
+    }
+
+    .carrusel-btn{
+        width:38px;
+        height:38px;
+    }
+
+    .prev-btn{
+        left:-5px;
+    }
+
+    .next-btn{
+        right:-5px;
+    }
 }

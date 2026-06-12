@@ -4,23 +4,32 @@ document.addEventListener("DOMContentLoaded", () => {
        1. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
        ========================================================================== */
     const faqPreguntas = document.querySelectorAll(".faq-pregunta");
+const faqItems = document.querySelectorAll(".faq-item");
 
-    faqPreguntas.forEach(pregunta => {
-        pregunta.addEventListener("click", () => {
-            const itemActual = pregunta.parentElement;
-            
-            document.querySelectorAll(".faq-item").forEach(item => {
-                if (item !== itemActual) item.classList.remove("active");
-            });
+faqPreguntas.forEach(pregunta => {
 
-            itemActual.classList.toggle("active");
+    pregunta.addEventListener("click", () => {
+
+        const itemActual = pregunta.parentElement;
+
+        faqItems.forEach(item => {
+
+            if(item !== itemActual){
+                item.classList.remove("active");
+            }
+
         });
+
+        itemActual.classList.toggle("active");
+
     });
+
+});
 
     /* ==========================================================================
        2. ANIMACIÓN DE APARICIÓN AL HACER SCROLL
        ========================================================================== */
-    const seccionesAAanimar = document.querySelectorAll("#nosotros, #servicios, #porque, .estadisticas, #tecnologias, #proyectos, #especializados, #faq, #contacto");
+    const seccionesAAanimar = document.querySelectorAll('section');
     
     seccionesAAanimar.forEach(sec => sec.classList.add("reveal"));
 
@@ -49,11 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll('.proyecto-card');
     const nextBtn = document.querySelector('.next-btn');
     const prevBtn = document.querySelector('.prev-btn');
-    
+
     if (track && cards.length > 0 && nextBtn && prevBtn) {
+
         let index = 0;
 
         function moverCarrusel() {
+
             const cardsPerView = window.innerWidth <= 768 ? 1 : 2;
             const maxIndex = cards.length - cardsPerView;
 
@@ -61,23 +72,44 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index < 0) index = maxIndex;
 
             const porcentajeDesplazamiento = index * (100 / cardsPerView);
-            track.style.transform = `translateX(-${porcentajeDesplazamiento}%)`;
+
+            track.style.transform =
+                `translateX(-${porcentajeDesplazamiento}%)`;
         }
 
         nextBtn.addEventListener('click', (e) => {
+
             e.preventDefault();
+
             index++;
+
             moverCarrusel();
+
         });
 
-        prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            index--;
-            moverCarrusel();
-        });
+    prevBtn.addEventListener('click', (e) => {
 
-        window.addEventListener('resize', moverCarrusel);
-    }
+        e.preventDefault();
+
+        index--;
+
+        moverCarrusel();
+
+    });
+
+    let resizeTimer;
+
+    window.addEventListener('resize', () => {
+
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(() => {
+            moverCarrusel();
+        }, 200);
+
+    });
+
+}
 
     /* ==========================================================================
        4. INTERACTIVIDAD DE SOLUCIONES ESPECIALIZADAS (TABS / RECUADROS)
@@ -85,33 +117,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabBotones = document.querySelectorAll('.tab-btn');
     const tabContenidos = document.querySelectorAll('.tab-contenido');
 
-    if (tabBotones.length > 0 && tabContenidos.length > 0) {
-        tabBotones.forEach(boton => {
-            boton.addEventListener('click', (e) => {
-                e.preventDefault(); // Evita saltos raros en la web
-                
-                // Quitar clase activa de todos los botones de la izquierda
-                tabBotones.forEach(b => b.classList.remove('active'));
-                
-                // Activar solo el botón que tocaste
-                boton.classList.add('active');
+        if (tabBotones.length && tabContenidos.length) {
 
-                // Conseguir el ID del bloque que hay que mostrar (cableado, fibra, etc.)
-                const destinoTab = boton.getAttribute('data-tab');
+            tabBotones.forEach(boton => {
 
-                // Ocultar todos los bloques de contenido de la derecha
-                tabContenidos.forEach(contenido => {
-                    contenido.classList.remove('active');
+                boton.addEventListener('click', (e) => {
+
+                    e.preventDefault();
+
+                    tabBotones.forEach(btn =>
+                        btn.classList.remove('active')
+                    );
+
+                    tabContenidos.forEach(contenido =>
+                        contenido.classList.remove('active')
+                    );
+
+                    boton.classList.add('active');
+
+                    const contenidoActivo =
+                        document.getElementById(boton.dataset.tab);
+
+                    if (contenidoActivo) {
+                        contenidoActivo.classList.add('active');
+                    }
+
                 });
 
-                // Mostrar el bloque que corresponde con su texto e imagen
-                const contenidoActivo = document.getElementById(destinoTab);
-                if (contenidoActivo) {
-                    contenidoActivo.classList.add('active');
-                }
             });
-        });
-    }
+
+}
 
     /* ==========================================================================
        5. INTERACTIVIDAD DEL FORMULARIO DE CONTACTO (CARTEL DE ÉXITO)
@@ -143,4 +178,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 5000);
         });
     }
+    const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+
+if(menuToggle && menu){
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+}
 });
