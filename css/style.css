@@ -1,30 +1,13 @@
 /* ==========================================================================
    1. CONFIGURACIÓN GENERAL Y VARIABLES
    ========================================================================== */
-/* RESET GLOBAL */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 :root {
-    --color-principal: #060d1a;
-    --color-secundario: #0b1726;
-    --color-acento: #38bdf8;
-    --color-neon-glow: rgba(56, 189, 248, 0.12);
-    --color-texto: #f8fafc;
-    --color-mutado: #94a3b8;
-
-    --borde-suave: rgba(255,255,255,.05);
-    --borde-extra-suave: rgba(255,255,255,.03);
-
-    --transicion: all .3s ease;
-
+    --color-principal: #060d1a;    /* Un azul un poco más profundo para que contraste el neón */
+    --color-secundario: #0b1726;   /* Azul medio para las tarjetas */
+    --color-acento: #38bdf8;       /* Cyan brillante */
+    --color-neon-glow: rgba(56, 189, 248, 0.12); /* El color del destello semitransparente */
+    --color-texto: #f8fafc;        
+    --color-mutado: #94a3b8;       
     --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -34,7 +17,7 @@ body {
     line-height: 1.6;
     background-color: var(--color-principal);
     
-    /* 🔥 AQUÍ LA MAGIA: Creamos nubes de luz estáticas en diferentes puntos de la pantalla */
+    /* 🔥 Nubes de luz estáticas en diferentes puntos de la pantalla */
     background-image: 
         radial-gradient(circle at 80% 20%, var(--color-neon-glow) 0%, transparent 40%),
         radial-gradient(circle at 15% 50%, rgba(3, 105, 161, 0.15) 0%, transparent 45%),
@@ -52,8 +35,16 @@ section {
 .titulo-seccion {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 10px; 
     color: var(--color-acento);
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    color: var(--color-mutado);
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 1rem;
 }
 
 img {
@@ -65,19 +56,14 @@ img {
 /* ==========================================================================
    2. HEADER & NAVBAR
    ========================================================================== */
-header{
-    background: rgba(6,13,26,.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
+header {
+    background-color: rgba(10, 25, 47, 0.95);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-
     z-index: 1000;
-
-    box-shadow: 0 2px 10px rgba(0,0,0,.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
@@ -87,11 +73,27 @@ header{
     max-width: 1200px;
     margin: 0 auto;
     padding: 15px 5%;
+    position: relative; /* Clave para el posicionamiento absoluto del menú móvil */
 }
 
 .logo img {
     height: 50px;
     border-radius: 5px;
+}
+
+/* Botón menú hamburguesa (Oculto por defecto en escritorio) */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: var(--color-acento);
 }
 
 .menu {
@@ -123,20 +125,16 @@ header{
     padding-top: 120px;
 }
 
-.hero-logo{
+.hero-logo {
     max-height: 120px;
     margin: 0 auto 20px;
     border-radius: 10px;
-
-    filter: drop-shadow(0 0 20px rgba(56,189,248,.2));
 }
 
-.hero h1{
+.hero h1 {
     font-size: 3.5rem;
     letter-spacing: 2px;
     margin-bottom: 10px;
-
-    text-shadow: 0 0 20px rgba(56,189,248,.2);
 }
 
 .hero h2 {
@@ -160,14 +158,12 @@ header{
 }
 
 /* Botones */
-.btn,
-.btn-sec{
+.btn, .btn-sec {
     padding: 12px 28px;
-    border-radius: 6px;
+    border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-
-    transition: var(--transicion);
+    transition: all 0.3s ease;
 }
 
 .btn {
@@ -175,12 +171,9 @@ header{
     color: var(--color-principal);
 }
 
-.btn:hover,
-.btn-sec:hover{
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 20px rgba(56,189,248,.25);
+.btn:hover {
+    background-color: #0284c7;
+    transform: translateY(-2px);
 }
 
 .btn-sec {
@@ -212,7 +205,7 @@ header{
 }
 
 /* ==========================================================================
-   SECCIÓN NOSOTROS / SERVICIOS (Tarjetas Estándar)
+   4. SECCIÓN NOSOTROS / SERVICIOS (Tarjetas Estándar)
    ========================================================================== */
 #nosotros {
     text-align: center;
@@ -237,8 +230,8 @@ header{
 }
 
 .card {
-    background-color: rgba(11, 23, 38, 0.6); /* Transparente para nubes de luz */
-    backdrop-filter: blur(4px);              /* Efecto vidrio esmerilado */
+    background-color: rgba(11, 23, 38, 0.6); 
+    backdrop-filter: blur(4px);              
     padding: 35px 25px;
     border-radius: 8px;
     text-align: center;
@@ -248,7 +241,7 @@ header{
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15); /* Brillo cyan */
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15); 
     border-color: var(--color-acento);
 }
 
@@ -282,26 +275,17 @@ header{
 }
 
 /* ==========================================================================
-   NUEVO DISEÑO DE PESTAÑAS (TABS) PARA SOLUCIONES ESPECIALIZADAS
+   5. DISEÑO DE PESTAÑAS (TABS) - CONEXIÓN CON JS CON INTERFAZ FLUIDA
    ========================================================================== */
-.subtitulo-seccion {
-    text-align: center;
-    color: var(--color-mutado);
-    margin-top: -20px;
-    margin-bottom: 40px;
-    font-size: 1rem;
-}
-
 .soluciones-wrapper {
     display: grid;
-    grid-template-columns: 320px 1fr; /* Menú izquierdo y contenido derecho */
+    grid-template-columns: 320px 1fr; 
     gap: 30px;
     max-width: 1150px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Menú lateral de botones */
 .soluciones-menu {
     display: flex;
     flex-direction: column;
@@ -339,7 +323,6 @@ header{
     color: var(--color-texto);
 }
 
-/* Botón activo seleccionado */
 .tab-btn.active {
     background-color: rgba(11, 23, 38, 0.8);
     border-color: var(--color-acento);
@@ -351,122 +334,89 @@ header{
     color: var(--color-acento);
 }
 
-/* Caja de contenido (Derecha) */
 .soluciones-contenido-box {
     background-color: rgba(11, 23, 38, 0.6);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 12px;
     padding: 40px;
+    min-height: 400px;
     display: flex;
     align-items: center;
-    min-height: 400px; /* Escritorio */
 }
-/* CONTENIDO DE LAS PESTAÑAS */
-    .tab-contenido {
-        display: none;
-        width: 100%;
-    }
 
-    .tab-contenido.active {
-        display: block;
-    }
+/* 🔄 AJUSTE DE RELACIÓN: Preparado para alternar con JS sin bugs de display */
+.tab-contenido {
+    display: none; 
+    width: 100%;
+    opacity: 0;
+    transform: translateX(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
 
-    /* DISTRIBUCIÓN TEXTO + IMAGEN */
-    .tab-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 30px;
-        align-items: center;
-    }
+.tab-contenido.active {
+    display: block; 
+    opacity: 1;
+    transform: translateX(0);
+}
 
-    .tab-texto h3 {
-        font-size: 2rem;
-        margin-bottom: 15px;
-        color: var(--color-texto);
-    }
-
-    .tab-texto p {
-        color: var(--color-mutado);
-        margin-bottom: 20px;
-    }
-
-    .tab-beneficios {
-        list-style: none;
-        padding: 0;
-    }
-
-    .tab-beneficios li {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 12px;
-    }
-
-    .tab-beneficios li i {
-        color: #10b981;
-    }
-
-/* RESPONSIVE: Celulares y Tablets */
-@media (max-width: 900px) {
-
-    .soluciones-wrapper {
-        grid-template-columns: 1fr;
-    }
-
-    .soluciones-menu {
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 10px;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .tab-btn {
-        white-space: nowrap;
-        padding: 12px 18px;
-    }
-
-    .tab-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .soluciones-contenido-box {
-        padding: 25px;
-        min-height: auto;
-    }
-
-    .tab-grid {
+.tab-grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     gap: 30px;
     align-items: center;
-    }
+}
 
-    .tab-imagen {
-    height: 300px;
-    }
+.tab-texto h3 {
+    font-size: 1.6rem;
+    color: var(--color-texto);
+    margin-bottom: 15px;
+}
 
-    .tab-imagen img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.tab-texto p {
+    color: var(--color-mutado);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
 
-     .tab-texto h3 {
-        font-size: 1.6rem;
-    }
+.tab-beneficios {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+}
 
-    .tab-texto p {
-        font-size: 0.95rem;
-    }
+.tab-beneficios li {
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-    .tab-beneficios li {
-        font-size: 0.9rem;
-    }
+.tab-beneficios li i {
+    color: #10b981; 
+    font-size: 0.95rem;
+}
+
+.tab-imagen {
+    width: 100%;
+    height: 260px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tab-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* ==========================================================================
-   5. SECCIÓN ESTADÍSTICAS INTERMEDIAS
+   6. SECCIÓN ESTADÍSTICAS INTERMEDIAS
    ========================================================================== */
 .estadisticas {
     background-color: var(--color-secundario);
@@ -484,7 +434,7 @@ header{
 }
 
 /* ==========================================================================
-   6. GRID DE TECNOLOGÍAS
+   7. GRID DE TECNOLOGÍAS
    ========================================================================== */
 .tecnologias-grid {
     display: grid;
@@ -507,7 +457,7 @@ header{
 }
 
 /* ==========================================================================
-   NUEVO CARRUSEL DE PROYECTOS (SLIDER INTERACTIVO)
+   8. CARRUSEL DE PROYECTOS (SLIDER INTERACTIVO)
    ========================================================================== */
 .carrusel-proyectos-contenedor {
     position: relative;
@@ -518,14 +468,12 @@ header{
     padding: 0 40px;
 }
 
-/* Ventana que recorta lo que se sale del contenedor */
 .carrusel-proyectos-window {
     overflow: hidden;
     width: 100%;
     border-radius: 12px;
 }
 
-/* Contenedor largo que se desplaza */
 .carrusel-proyectos-track {
     display: flex;
     gap: 20px;
@@ -533,27 +481,24 @@ header{
     width: 100%;
 }
 
-/* Tarjeta individual del proyecto (Actualizada con transparencias) */
 .proyecto-card {
     width: calc(50% - 10px); 
     flex-shrink: 0;          
-    background-color: rgba(11, 23, 38, 0.6); /* 🔥 Transparente para ver las nubes de luz */
-    backdrop-filter: blur(4px);              /* 🔥 Efecto vidrio esmerilado */
+    background-color: rgba(11, 23, 38, 0.6); 
+    backdrop-filter: blur(4px);              
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.03); /* Borde sutil */
+    border: 1px solid rgba(255, 255, 255, 0.03);
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* 🔥 EFECTO AL PASAR EL MOUSE POR UN PROYECTO */
 .proyecto-card:hover {
-    border-color: var(--color-acento); /* El borde se ilumina en cyan */
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15); /* Brillo neón abajo */
+    border-color: var(--color-acento);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15); 
 }
 
-/* Contenedor de la foto */
 .proyecto-img-container {
     position: relative;
     width: 100%;
@@ -572,7 +517,6 @@ header{
     transform: scale(1.06);
 }
 
-/* Etiqueta flotante sobre la foto (ej: CCTV, Redes) */
 .proyecto-tag {
     position: absolute;
     top: 15px;
@@ -586,7 +530,6 @@ header{
     z-index: 2;
 }
 
-/* Textos abajo de la foto */
 .proyecto-detalle {
     padding: 25px;
     display: flex;
@@ -606,7 +549,6 @@ header{
     line-height: 1.5;
 }
 
-/* Botones de navegación (Flechas) */
 .carrusel-btn {
     position: absolute;
     top: 50%;
@@ -634,251 +576,216 @@ header{
 .prev-btn { left: -10px; }
 .next-btn { right: -10px; }
 
-/* ADAPTACIÓN PARA CELULARES (Muestra 1 sola tarjeta completa) */
-@media (max-width: 768px){
-
-    .navbar{
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .menu{
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-
-    .hero h1{
-        font-size: 2.5rem;
-    }
-
-    .hero h2{
-        font-size: 1.4rem;
-    }
-
-    .hero-stats{
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .estadisticas{
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .carrusel-proyectos-contenedor{
-        padding: 0 20px;
-    }
-
-    .proyecto-card{
-        width: 100%;
-        flex-shrink: 0;
-    }
-
-    .carrusel-btn{
-        width: 38px;
-        height: 38px;
-    }
-
-    .prev-btn{
-        left: -5px;
-    }
-
-    .next-btn{
-        right: -5px;
-    }
-}
-
-/* ==========================================================================
-   8. CONTACTO & FORMULARIO
-   ========================================================================== */
-/* CONTACTO OPTIMIZADO CON TRANSPARENCIAS */
-.contacto-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    background-color: rgba(11, 23, 38, 0.6); /* 🔥 Transparente para las nubes de luz */
-    backdrop-filter: blur(6px);              /* 🔥 Efecto vidrio esmerilado */
-    padding: 40px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.04); /* Borde fino premium */
-}
-
-.contacto-info h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: var(--color-acento);
-    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.2));
-}
-
-.contacto-info p {
-    margin-bottom: 15px;
+/* Filtros opcionales / Galería */
+.filtros-proyectos {
     display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.contacto-info i {
-    color: var(--color-acento);
-}
-
-.formulario {
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     gap: 15px;
-    position: relative; /* Clave para poder posicionar el cartel de éxito encima */
+    margin-bottom: 30px;
 }
 
-/* Campos de entrada con estilo futurista semitransparente */
-.formulario input, .formulario textarea {
-    width: 100%;
-    padding: 12px;
-    background-color: rgba(6, 13, 26, 0.5); /* 🔥 Fondo oscuro sutil y transparente */
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--color-texto);
-    border-radius: 4px;
-    outline: none;
-    font-family: var(--fuente);
+.btn-filtro {
+    background: transparent;
+    border: 2px solid var(--color-acento);
+    color: var(--color-acento);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
-.formulario input:focus, .formulario textarea:focus {
-    border-color: var(--color-acento);
-    background-color: rgba(6, 13, 26, 0.8);
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.15); /* Brillo sutil al escribir */
-}
-
-.formulario textarea {
-    height: 120px;
-    resize: none;
-}
-
-.formulario button {
+.btn-filtro.active, .btn-filtro:hover {
     background-color: var(--color-acento);
     color: var(--color-principal);
-    border: none;
-    padding: 12px;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.formulario button:hover {
-    background-color: #0284c7;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); /* Brillo en el botón */
+.item-galeria {
+    transition: transform 0.4s ease, opacity 0.4s ease, width 0.4s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.item-galeria.hide {
+    opacity: 0;
+    transform: scale(0.8);
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.proyecto { position: relative; }
+
+.proyecto-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(10, 25, 47, 0.9));
+    padding: 20px;
+    text-align: center;
 }
 
 /* ==========================================================================
-   ESTILOS NUEVOS: CARTEL DE EXITO PARA EL FORMULARIO (JS)
+   9. CASOS DE ÉXITO (DISEÑO PREMIUM REDISEÑADO)
    ========================================================================== */
-.mensaje-exito {
-    background-color: rgba(16, 185, 129, 0.15); /* Verde esmeralda transparente */
-    border: 1px solid #10b981;
-    color: #34d399;
-    padding: 15px;
-    border-radius: 4px;
-    text-align: center;
-    font-weight: 500;
-    font-size: 0.95rem;
+#casos-exito {
+    padding: 100px 5%;
+    position: relative;
+}
+
+.casos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+    margin-top: 50px;
+}
+
+.caso-card {
+    background: linear-gradient(135deg, rgba(11, 23, 38, 0.6) 0%, rgba(6, 13, 26, 0.8) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* Borde sutil inicial */
+    border: 1px solid rgba(56, 189, 248, 0.08);
+    border-radius: 20px;
+    padding: 35px;
+    position: relative;
+    overflow: hidden;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Efecto de destello interior al hacer hover */
+.caso-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(56, 189, 248, 0.06), transparent 40%);
+    z-index: 1;
+    pointer-events: none;
     opacity: 0;
-    transform: translateY(10px);
+    transition: opacity 0.3s ease;
+}
+
+.caso-card:hover::before {
+    opacity: 1;
+}
+
+.caso-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                0 0 30px rgba(56, 189, 248, 0.05);
+}
+
+/* Contenedor del Icono y Badge de Impacto */
+.caso-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    z-index: 2;
+}
+
+.caso-icono {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(3, 105, 161, 0.05) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all 0.4s ease;
 }
 
-.mensaje-exito.mostrar {
-    opacity: 1;
-    transform: translateY(0);
+.caso-icono i {
+    font-size: 1.6rem;
+    color: var(--color-acento);
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
+    transition: transform 0.4s ease;
 }
 
-/* ==========================================================================
-   9. FOOTER
-   ========================================================================== */
-footer {
-    background-color: #050c16;
-    text-align: center;
-    padding: 40px 5%;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+.caso-card:hover .caso-icono {
+    background: var(--color-acento);
+    border-color: var(--color-acento);
+    transform: rotate(-5deg) scale(1.05);
 }
 
-footer img {
-    height: 65px;
-    margin: 0 auto 15px;
-    border-radius: 5px;
+.caso-card:hover .caso-icono i {
+    color: var(--color-principal);
+    filter: none;
+    transform: scale(1.1);
 }
 
-footer h3 {
-    margin-bottom: 5px;
+/* Badge de porcentaje o logro principal */
+.caso-badge {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 30px;
+    letter-spacing: 0.5px;
 }
 
-footer p {
-    color: var(--color-mutado);
-    font-size: 0.9rem;
+/* Título e Información */
+ .caso-card h3 {
+    font-size: 1.4rem;
+    margin-top: 15px; /* 🔥 Esto le da aire por arriba para que no se pegue al header de la tarjeta */
+    margin-bottom: 20px;
+    color: #f8fafc;
 }
 
-/* ==========================================================================
-   10. BOTÓN FLOTANTE DE WHATSAPP
-   ========================================================================== */
-.whatsapp{
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
+.caso-card:hover h3 {
+    color: var(--color-acento);
+}
 
-    background-color: #25d366;
-
-    color: white;
-
-    width: 60px;
-    height: 60px;
-
-    border-radius: 50%;
-
+.caso-info-list {
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 30px;
-
-    z-index: 1000;
-
-    text-decoration: none;
-
-    transition: var(--transicion);
-
-    animation: pulse 2s infinite;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 2;
 }
 
-.whatsapp:hover{
-    transform: scale(1.1);
+.caso-item {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-mutado);
+    border-left: 2px solid rgba(255, 255, 255, 0.05);
+    padding-left: 15px;
+    transition: border-color 0.3s ease;
 }
 
-@keyframes pulse{
-    0%{
-        box-shadow: 0 0 0 0 rgba(37,211,102,.5);
-    }
-
-    70%{
-        box-shadow: 0 0 0 15px rgba(37,211,102,0);
-    }
-
-    100%{
-        box-shadow: 0 0 0 0 rgba(37,211,102,0);
-    }
+.caso-card:hover .caso-item {
+    border-color: rgba(56, 189, 248, 0.3);
 }
 
-.whatsapp:hover {
-    transform: scale(1.1);
+/* Resaltado de datos numéricos clave */
+.caso-item strong {
+    color: var(--color-texto);
+    font-weight: 600;
+}
+
+.caso-metric {
+    background: linear-gradient(to right, #f8fafc, var(--color-acento));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
 }
 
 /* ==========================================================================
-   NUEVOS ESTILOS: FILTROS, FAQ Y ANIMACIONES
+   10. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
    ========================================================================== */
-/* Acordeón de Preguntas Frecuentes */
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
@@ -908,9 +815,7 @@ footer p {
     background-color: rgba(255, 255, 255, 0.02);
 }
 
-.faq-pregunta h3 {
-    font-size: 1.1rem;
-}
+.faq-pregunta h3 { font-size: 1.1rem; }
 
 .faq-pregunta i {
     color: var(--color-acento);
@@ -930,103 +835,110 @@ footer p {
     font-size: 0.95rem;
 }
 
-/* Clases activas para JS */
 .faq-item.active .faq-pregunta i {
     transform: rotate(180deg);
 }
 
+/* 🔄 AJUSTE DE RELACIÓN: Margen de seguridad amplio para que textos largos de JS no se corten */
 .faq-item.active .faq-respuesta {
-    max-height: 200px; /* Permite que la respuesta se despliegue de forma fluida */
+    max-height: 400px; 
 }
 
-/* CLASES PARA ANIMACIÓN AL HACER SCROLL */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
 /* ==========================================================================
-   CARRUSEL DE MARCAS AUTOMÁTICO INFINITO
+   11. CARRUSEL DE TECNOLOGÍAS / MARCAS (REDISEÑO PREMIUM)
    ========================================================================== */
 .carrusel-marcas {
-    overflow: hidden; /* Esconde los logos que se salen de la pantalla */
-    padding: 20px 0;
+    overflow: hidden;
+    padding: 40px 0;
     position: relative;
     width: 100%;
-    background-color: rgba(23, 42, 69, 0.3); /* Un fondo sutil */
-    border-radius: 8px;
+    background: linear-gradient(to right, rgba(11, 23, 38, 0.2), rgba(23, 42, 69, 0.2));
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    
+    /* 🔥 Truco Premium: Desvanecimiento sutil en los extremos izquierdo y derecho */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
 }
 
-/* Agrega un difuminado elegante en los bordes izquierdo y derecho */
-.carrusel-marcas::before, .carrusel-marcas::after {
-    content: "";
-    height: 100%;
-    position: absolute;
-    width: 15%;
-    z-index: 2;
-    pointer-events: none;
-}
-.carrusel-marcas::before {
-    left: 0;
-    top: 0;
-    background: linear-gradient(to right, var(--color-principal), transparent);
-}
-.carrusel-marcas::after {
-    right: 0;
-    top: 0;
-    background: linear-gradient(to left, var(--color-principal), transparent);
-}
-
-/* El contenedor que se mueve */
 .carrusel-track {
     display: flex;
-    width: calc(200px * 12); /* Ancho de cada logo multiplicado por el total (originales + copia) */
-    animation: scrollMarcas 25s linear infinite;
+    width: calc(200px * 16); /* Ajusta el multiplicador según la cantidad de logos duplicados */
+    animation: scrollMarcas 30s linear infinite; /* Un movimiento más lento (30s) da sensación de fluidez y elegancia */
 }
 
-/* Estilo de cada logo individual */
 .marca-logo {
     width: 200px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 30px;
+    padding: 0 35px;
+    perspective: 1000px; /* Para dar una ligera sensación de profundidad */
 }
 
 .marca-logo img {
-    max-height: 45px; /* Controla que todos los logos tengan una altura uniforme */
-    width: auto;
-    filter: grayscale(100%) opacity(60%); /* Estética corporativa: gris y semi-transparente */
-    transition: filter 0.3s ease;
+    max-width: 100%;
+    max-height: 50px; /* Controla que ningún logo sea más alto que otro */
+    object-fit: contain;
+    
+    /* 🔥 Look Tecnológico: Filtro grisáceo y sutilmente brillante por defecto */
+    filter: grayscale(100%) brightness(0) invert(1) opacity(40%);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.95);
 }
 
-/* Cuando el usuario pasa el mouse, el carrusel se frena y el logo toma color original */
+/* ⏸️ Pausa orgánica al pasar el mouse por la sección */
 .carrusel-marcas:hover .carrusel-track {
     animation-play-state: paused;
 }
 
-.marca-logo img:hover {
-    filter: grayscale(0%) opacity(100%);
+/* 🔥 Efecto Hover Premium en el Logo */
+.marca-logo:hover img {
+    filter: grayscale(0%) brightness(1) opacity(100%); /* Recupera su color e identidad original */
+    transform: scale(1.08); /* Crece sutilmente */
+    
+    /* Pequeño reflejo o sombra del color del logo debajo */
+    filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.3)); 
 }
 
-/* LA MAGIA DE LA ANIMACIÓN: Mueve el track exactamente hasta la mitad */
+/* Animación fluida de traslación */
 @keyframes scrollMarcas {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-200px * 6)); /* Se desplaza el ancho de los 6 logos originales */
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-200px * 8)); } /* Debe ser exactamente la mitad del ancho total del track */
 }
-/* Corrección del bloque de horarios */
-.contacto-horario-block {
+
+/* ==========================================================================
+   12. CONTACTO & FORMULARIO
+   ========================================================================== */
+.contacto-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    background-color: rgba(11, 23, 38, 0.6);
+    backdrop-filter: blur(6px);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.contacto-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--color-acento);
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.2));
+}
+
+.contacto-info p {
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+.contacto-info i { color: var(--color-acento); }
+
+.contacto-horario-block { margin-bottom: 15px; }
 
 .horario-titulo {
     margin-bottom: 5px;
@@ -1036,8 +948,8 @@ footer p {
 }
 
 .horario-lista {
-    list-style: none; /* Quita los puntitos de la lista */
-    padding-left: 26px; /* Alinea el texto justo abajo de donde empieza la palabra "Horario" */
+    list-style: none;
+    padding-left: 26px;
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -1049,88 +961,219 @@ footer p {
 }
 
 .horario-lista li span {
-    color: var(--color-mutado); /* Deja los días en gris y las horas en blanco para que resalte más */
+    color: var(--color-mutado);
     font-weight: 500;
 }
-.menu-toggle{
-    display: none;
-    font-size: 1.8rem;
-    color: #fff;
-    cursor: pointer;
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
 }
 
-@media(max-width:768px){
+.formulario input, .formulario textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(6, 13, 26, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--color-texto);
+    border-radius: 4px;
+    outline: none;
+    font-family: var(--fuente);
+    transition: all 0.3s ease;
+}
 
-    .menu-toggle{
-        display:block;
+.formulario input:focus, .formulario textarea:focus {
+    border-color: var(--color-acento);
+    background-color: rgba(6, 13, 26, 0.8);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+}
+
+.formulario textarea {
+    height: 120px;
+    resize: none;
+}
+
+.formulario button {
+    background-color: var(--color-acento);
+    color: var(--color-principal);
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.formulario button:hover {
+    background-color: #0284c7;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+.mensaje-exito {
+    background-color: rgba(16, 185, 129, 0.15);
+    border: 1px solid #10b981;
+    color: #34d399;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.mensaje-exito.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   13. FOOTER & COMPONENTES FLOTANTES
+   ========================================================================== */
+footer {
+    background-color: #050c16;
+    text-align: center;
+    padding: 40px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer img {
+    height: 65px;
+    margin: 0 auto 15px;
+    border-radius: 5px;
+}
+
+footer h3 { margin-bottom: 5px; }
+
+footer p {
+    color: var(--color-mutado);
+    font-size: 0.9rem;
+}
+
+.whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp:hover { transform: scale(1.1); }
+
+/* Clases globales para animaciones Scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   14. MEDIA QUERIES (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .soluciones-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .soluciones-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .tab-btn {
+        white-space: nowrap;
+        padding: 12px 18px;
+    }
+    .tab-grid {
+        grid-template-columns: 1fr;
+    }
+    .soluciones-contenido-box {
+        padding: 25px;
+        min-height: auto;
+    }
+    .tab-imagen {
+        order: -1;
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 🔄 AJUSTE DE RELACIÓN: Menú móvil colapsado y botón hamburguesa visible */
+    .menu-toggle {
+        display: block; 
     }
 
-    .navbar{
-        flex-direction:row;
+    .menu {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(10, 25, 47, 0.98); 
+        padding: 20px 0;
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        gap: 15px;
     }
 
-    .menu{
-        position:absolute;
-        top:80px;
-        left:0;
-
-        width:100%;
-
-        background:#0f172a;
-
-        flex-direction:column;
-
-        text-align:center;
-
-        display:none;
-
-        padding:20px 0;
+    /* 🔄 AJUSTE DE RELACIÓN: Activación controlada por la clase que inyecta JS */
+    .menu.active {
+        display: flex; 
     }
 
-    .menu.active{
-        display:flex;
+    .navbar {
+        padding: 15px 5%;
     }
 
-    .menu li{
-        margin:15px 0;
+    .hero h1 { font-size: 2.5rem; }
+    .hero h2 { font-size: 1.4rem; }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
     }
 
-    .hero h1{
-        font-size:2.5rem;
+    .estadisticas {
+        flex-direction: column;
+        gap: 30px;
     }
 
-    .hero h2{
-        font-size:1.4rem;
+    .carrusel-proyectos-contenedor {
+        padding: 0 20px;
     }
-
-    .hero-stats{
-        flex-direction:column;
-        gap:20px;
+    .proyecto-card {
+        width: 100%;       
+        flex-shrink: 0;    
     }
-
-    .estadisticas{
-        flex-direction:column;
-        gap:30px;
+    .carrusel-btn {
+        width: 38px;
+        height: 38px;
     }
-
-    .carrusel-proyectos-contenedor{
-        padding:0 20px;
-    }
-
-    .proyecto-card{
-        width:100%;
-    }
-
-    .carrusel-btn{
-        width:38px;
-        height:38px;
-    }
-
-    .prev-btn{
-        left:-5px;
-    }
-
-    .next-btn{
-        right:-5px;
-    }
+    .prev-btn { left: -5px; }
+    .next-btn { right: -5px; }
 }
