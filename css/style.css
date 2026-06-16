@@ -2,10 +2,10 @@
    1. CONFIGURACIÓN GENERAL Y VARIABLES
    ========================================================================== */
 :root {
-    --color-principal: #060d1a;    /* Un azul un poco más profundo para que contraste el neón */
-    --color-secundario: #0b1726;   /* Azul medio para las tarjetas */
+    --color-principal: #060d1a;    /* Azul profundo neón */
+    --color-secundario: #0b1726;   /* Azul medio para tarjetas */
     --color-acento: #38bdf8;       /* Cyan brillante */
-    --color-neon-glow: rgba(56, 189, 248, 0.12); /* El color del destello semitransparente */
+    --color-neon-glow: rgba(56, 189, 248, 0.12);
     --color-texto: #f8fafc;        
     --color-mutado: #94a3b8;       
     --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,12 +17,12 @@ body {
     line-height: 1.6;
     background-color: var(--color-principal);
     
-    /* 🔥 Nubes de luz estáticas en diferentes puntos de la pantalla */
+    /* Nubes de luz estáticas en la pantalla */
     background-image: 
         radial-gradient(circle at 80% 20%, var(--color-neon-glow) 0%, transparent 40%),
         radial-gradient(circle at 15% 50%, rgba(3, 105, 161, 0.15) 0%, transparent 45%),
         radial-gradient(circle at 70% 80%, var(--color-neon-glow) 0%, transparent 40%);
-    background-attachment: fixed; /* Hace que las luces se queden fijas mientras el texto sube */
+    background-attachment: fixed;
     background-size: cover;
 }
 
@@ -54,7 +54,7 @@ img {
 }
 
 /* ==========================================================================
-   2. HEADER & NAVBAR
+   2. HEADER, NAVBAR & LOGO SUPERIOR (CORREGIDO)
    ========================================================================== */
 header {
     background-color: rgba(10, 25, 47, 0.95);
@@ -73,15 +73,25 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 15px 5%;
-    position: relative; /* Clave para el posicionamiento absoluto del menú móvil */
+    position: relative;
 }
 
+/* Se acota el logo para que solo viva discretamente dentro de la barra de navegación */
 .logo img {
-    height: 50px;
-    border-radius: 5px;
+    height: 45px;
+    width: auto;
+    max-height: 45px;
+    object-fit: contain;
+    mix-blend-mode: normal; 
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
-/* Botón menú hamburguesa (Oculto por defecto en escritorio) */
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Botón menú hamburguesa */
 .menu-toggle {
     display: none;
     background: transparent;
@@ -116,49 +126,46 @@ header {
 /* ==========================================================================
    3. SECCIÓN INICIO (HERO)
    ========================================================================== */
+
 .hero {
-    min-height: 100vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 120px;
+    padding: 100px 5% 40px;
 }
 
-.hero-logo {
-    max-height: 120px;
-    margin: 0 auto 20px;
-    border-radius: 10px;
+.hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.hero h2 {
-    font-size: 1.8rem;
-    color: var(--color-acento);
+    font-size: 4rem;
     margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .hero p {
-    max-width: 700px;
-    margin: 0 auto 30px;
-    color: var(--color-mutado);
-    font-size: 1.1rem;
+    max-width: 850px;
+    margin: 20px auto 35px;
+    font-size: 1.2rem;
+    line-height: 1.8;
 }
+
+/* Botones */
 
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
-/* Botones */
-.btn, .btn-sec {
+.btn,
+.btn-sec {
     padding: 12px 28px;
     border-radius: 5px;
     text-decoration: none;
@@ -186,26 +193,60 @@ header {
     transform: translateY(-2px);
 }
 
-/* Estadísticas del Hero */
+/* Servicios rápidos */
+
+.hero-servicios {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.hero-servicios div {
+    color: var(--color-acento);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.hero-servicios i {
+    margin-right: 8px;
+}
+
+/* Estadísticas */
+
 .hero-stats {
     display: flex;
     justify-content: center;
     gap: 50px;
-    border-top: 1px solid rgba(148, 163, 184, 0.2);
+    margin-top: 50px;
     padding-top: 30px;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+    flex-wrap: wrap;
 }
 
 .hero-stats h3 {
     font-size: 2rem;
     color: var(--color-acento);
+    margin-bottom: 5px;
 }
 
 .hero-stats span {
     color: var(--color-mutado);
 }
 
+/* Logo */
+
+.logo-hero-img {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+
 /* ==========================================================================
-   4. SECCIÓN NOSOTROS / SERVICIOS (Tarjetas Estándar)
+   4. SECCIÓN NOSOTROS / SERVICIOS
    ========================================================================== */
 #nosotros {
     text-align: center;
@@ -275,7 +316,7 @@ header {
 }
 
 /* ==========================================================================
-   5. DISEÑO DE PESTAÑAS (TABS) - CONEXIÓN CON JS CON INTERFAZ FLUIDA
+   5. DISEÑO DE PESTAÑAS (TABS)
    ========================================================================== */
 .soluciones-wrapper {
     display: grid;
@@ -345,7 +386,6 @@ header {
     align-items: center;
 }
 
-/* 🔄 AJUSTE DE RELACIÓN: Preparado para alternar con JS sin bugs de display */
 .tab-contenido {
     display: none; 
     width: 100%;
@@ -576,7 +616,6 @@ header {
 .prev-btn { left: -10px; }
 .next-btn { right: -10px; }
 
-/* Filtros opcionales / Galería */
 .filtros-proyectos {
     display: flex;
     justify-content: center;
@@ -630,7 +669,7 @@ header {
 }
 
 /* ==========================================================================
-   9. CASOS DE ÉXITO (DISEÑO PREMIUM REDISEÑADO)
+   9. CASOS DE ÉXITO
    ========================================================================== */
 #casos-exito {
     padding: 100px 5%;
@@ -648,8 +687,6 @@ header {
     background: linear-gradient(135deg, rgba(11, 23, 38, 0.6) 0%, rgba(6, 13, 26, 0.8) 100%);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    
-    /* Borde sutil inicial */
     border: 1px solid rgba(56, 189, 248, 0.08);
     border-radius: 20px;
     padding: 35px;
@@ -660,7 +697,6 @@ header {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Efecto de destello interior al hacer hover */
 .caso-card::before {
     content: '';
     position: absolute;
@@ -686,7 +722,6 @@ header {
                 0 0 30px rgba(56, 189, 248, 0.05);
 }
 
-/* Contenedor del Icono y Badge de Impacto */
 .caso-header {
     display: flex;
     justify-content: space-between;
@@ -726,7 +761,6 @@ header {
     transform: scale(1.1);
 }
 
-/* Badge de porcentaje o logro principal */
 .caso-badge {
     background: rgba(16, 185, 129, 0.1);
     border: 1px solid rgba(16, 185, 129, 0.2);
@@ -738,10 +772,31 @@ header {
     letter-spacing: 0.5px;
 }
 
-/* Título e Información */
- .caso-card h3 {
+.caso-logo-container {
+    height: 45px;          
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 15px;      
+    margin-bottom: 25px;   
+}
+
+.caso-logo-img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    filter: none; 
+    opacity: 1;   
+    transition: transform 0.3s ease;
+}
+
+.caso-card:hover .caso-logo-img {
+    transform: scale(1.02);
+}
+
+.caso-card h3 {
     font-size: 1.4rem;
-    margin-top: 15px; /* 🔥 Esto le da aire por arriba para que no se pegue al header de la tarjeta */
+    margin-top: 15px; 
     margin-bottom: 20px;
     color: #f8fafc;
 }
@@ -770,17 +825,19 @@ header {
     border-color: rgba(56, 189, 248, 0.3);
 }
 
-/* Resaltado de datos numéricos clave */
 .caso-item strong {
     color: var(--color-texto);
     font-weight: 600;
 }
 
 .caso-metric {
-    background: linear-gradient(to right, #f8fafc, var(--color-acento));
+    color: var(--color-acento); 
+    background: linear-gradient(135deg, #ffffff 30%, var(--color-acento) 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 700;
+    font-weight: 800; 
+    letter-spacing: 0.5px;
 }
 
 /* ==========================================================================
@@ -839,13 +896,12 @@ header {
     transform: rotate(180deg);
 }
 
-/* 🔄 AJUSTE DE RELACIÓN: Margen de seguridad amplio para que textos largos de JS no se corten */
 .faq-item.active .faq-respuesta {
     max-height: 400px; 
 }
 
 /* ==========================================================================
-   11. CARRUSEL DE TECNOLOGÍAS / MARCAS (REDISEÑO PREMIUM)
+   11. CARRUSEL DE MARCAS COMPONENTES
    ========================================================================== */
 .carrusel-marcas {
     overflow: hidden;
@@ -855,16 +911,14 @@ header {
     background: linear-gradient(to right, rgba(11, 23, 38, 0.2), rgba(23, 42, 69, 0.2));
     border-top: 1px solid rgba(255, 255, 255, 0.03);
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    
-    /* 🔥 Truco Premium: Desvanecimiento sutil en los extremos izquierdo y derecho */
     -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
 }
 
 .carrusel-track {
     display: flex;
-    width: calc(200px * 16); /* Ajusta el multiplicador según la cantidad de logos duplicados */
-    animation: scrollMarcas 30s linear infinite; /* Un movimiento más lento (30s) da sensación de fluidez y elegancia */
+    width: calc(200px * 16); 
+    animation: scrollMarcas 30s linear infinite; 
 }
 
 .marca-logo {
@@ -874,38 +928,30 @@ header {
     align-items: center;
     justify-content: center;
     padding: 0 35px;
-    perspective: 1000px; /* Para dar una ligera sensación de profundidad */
+    perspective: 1000px; 
 }
 
 .marca-logo img {
     max-width: 100%;
-    max-height: 50px; /* Controla que ningún logo sea más alto que otro */
+    max-height: 50px; 
     object-fit: contain;
-    
-    /* 🔥 Look Tecnológico: Filtro grisáceo y sutilmente brillante por defecto */
     filter: grayscale(100%) brightness(0) invert(1) opacity(40%);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform: scale(0.95);
 }
 
-/* ⏸️ Pausa orgánica al pasar el mouse por la sección */
 .carrusel-marcas:hover .carrusel-track {
     animation-play-state: paused;
 }
 
-/* 🔥 Efecto Hover Premium en el Logo */
 .marca-logo:hover img {
-    filter: grayscale(0%) brightness(1) opacity(100%); /* Recupera su color e identidad original */
-    transform: scale(1.08); /* Crece sutilmente */
-    
-    /* Pequeño reflejo o sombra del color del logo debajo */
-    filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.3)); 
+    filter: grayscale(0%) brightness(1) opacity(100%) drop-shadow(0 4px 12px rgba(56, 189, 248, 0.3)); 
+    transform: scale(1.08); 
 }
 
-/* Animación fluida de traslación */
 @keyframes scrollMarcas {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-200px * 8)); } /* Debe ser exactamente la mitad del ancho total del track */
+    100% { transform: translateX(calc(-200px * 8)); } 
 }
 
 /* ==========================================================================
@@ -937,7 +983,6 @@ header {
 }
 
 .contacto-info i { color: var(--color-acento); }
-
 .contacto-horario-block { margin-bottom: 15px; }
 
 .horario-titulo {
@@ -1036,28 +1081,47 @@ header {
 }
 
 /* ==========================================================================
-   13. FOOTER & COMPONENTES FLOTANTES
+   13. FOOTER & COMPONENTES FLOTANTES (CORREGIDO Y INTEGRADO)
    ========================================================================== */
 footer {
     background-color: #050c16;
     text-align: center;
-    padding: 40px 5%;
+    padding: 60px 5% 40px; /* Más espacio interno para que respire */
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-footer img {
-    height: 65px;
-    margin: 0 auto 15px;
-    border-radius: 5px;
+/* Contenedor para centrar el logo del pie */
+.logo-footer-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
-footer h3 { margin-bottom: 5px; }
+/* Estilo premium e imponente para el logo del footer */
+.logo-footer-img {
+    width: 100%;
+    max-width: 240px; /* Tamaño elegante para cerrar la página */
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.logo-footer-img:hover {
+    transform: scale(1.03);
+}
 
 footer p {
     color: var(--color-mutado);
     font-size: 0.9rem;
+    margin: 0;
 }
 
+/* Botón flotante de WhatsApp */
 .whatsapp {
     position: fixed;
     bottom: 25px;
@@ -1077,9 +1141,11 @@ footer p {
     transition: transform 0.3s ease;
 }
 
-.whatsapp:hover { transform: scale(1.1); }
+.whatsapp:hover { 
+    transform: scale(1.1); 
+}
 
-/* Clases globales para animaciones Scroll */
+/* Efectos de scroll (Reveal) */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -1090,7 +1156,6 @@ footer p {
     opacity: 1;
     transform: translateY(0);
 }
-
 /* ==========================================================================
    14. MEDIA QUERIES (RESPONSIVE)
    ========================================================================== */
@@ -1122,7 +1187,6 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    /* 🔄 AJUSTE DE RELACIÓN: Menú móvil colapsado y botón hamburguesa visible */
     .menu-toggle {
         display: block; 
     }
@@ -1141,7 +1205,6 @@ footer p {
         gap: 15px;
     }
 
-    /* 🔄 AJUSTE DE RELACIÓN: Activación controlada por la clase que inyecta JS */
     .menu.active {
         display: flex; 
     }
@@ -1167,7 +1230,7 @@ footer p {
         padding: 0 20px;
     }
     .proyecto-card {
-        width: 100%;       
+        width: 100%;      
         flex-shrink: 0;    
     }
     .carrusel-btn {
@@ -1176,4 +1239,19 @@ footer p {
     }
     .prev-btn { left: -5px; }
     .next-btn { right: -5px; }
+}
+/* Estilos para el logo centrado en la sección de inicio */
+.logo-hero-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.logo-hero-img {
+    width: 100%;
+    max-width: 380px; /* 🚀 Ajusta este valor si lo prefieres aún más gigante (ej. 420px) */
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 20px; /* Separación perfecta con el título */
+    filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.35)); /* Resalta el escudo sobre el fondo oscuro */
 }

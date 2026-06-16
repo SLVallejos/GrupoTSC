@@ -13,11 +13,6 @@
     <header>
     <nav class="navbar">
 
-        <div class="logo">
-            <img src="img/LOGO.png" alt="Grupo TSC">
-        </div>
-
-        <!-- Botón menú móvil -->
         <div class="menu-toggle">
             <i class="fas fa-bars"></i>
         </div>
@@ -35,34 +30,33 @@
 
     <!-- INICIO -->
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <img src="img/LOGO.png" alt="Grupo TSC" class="hero-logo">
-            <h1>GRUPO TSC</h1>
-            <h2>Tecnología, Seguridad y Conectividad</h2>
-            <p>
-                Soluciones integrales para empresas y organizaciones.
-                Infraestructura de redes, videovigilancia, control de acceso,
-                cableado estructurado y soporte especializado.
-            </p>
-            <div class="hero-buttons">
-                <a href="#contacto" class="btn">Solicitar Cotización</a>
-                <a href="#servicios" class="btn-sec">Ver Servicios</a>
-            </div>
-            <div class="hero-stats">
-                <div>
-                    <h3>+100</h3>
-                    <span>Proyectos</span>
-                </div>
-                <div>
-                    <h3>+50</h3>
-                    <span>Clientes</span>
-                </div>
-                <div>
-                    <h3>24/7</h3>
-                    <span>Soporte</span>
-                </div>
-            </div>
+    <div class="hero-content">
+
+        <div class="logo-hero-container">
+            <img src="img/TSC_Logo.png" alt="Grupo TSC" class="logo-hero-img">
         </div>
+
+        <h1>Soluciones Tecnológicas para Empresas</h1>
+
+        <p>
+            Infraestructura de redes, videovigilancia,
+            control de acceso, cableado estructurado
+            y soporte especializado.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#contacto" class="btn">Solicitar Cotización</a>
+            <a href="#servicios" class="btn-sec">Ver Servicios</a>
+        </div>
+
+        <div class="hero-servicios">
+            <div><i class="fas fa-network-wired"></i> Redes</div>
+            <div><i class="fas fa-video"></i> CCTV</div>
+            <div><i class="fas fa-door-open"></i> Accesos</div>
+            <div><i class="fas fa-server"></i> Infraestructura</div>
+        </div>
+
+    </div>
     </section>
 
     <!-- NOSOTROS -->
@@ -484,119 +478,87 @@
 
     
     <section id="casos-exito">
-        <h2 class="titulo-seccion">Casos de Éxito</h2>
-        <p class="subtitulo-seccion">Soluciones reales para infraestructuras tecnológicas críticas. Así ayudamos a nuestros clientes.</p>
+    <h2 class="titulo-seccion">Casos de Éxito</h2>
+    <p class="subtitulo-seccion">Soluciones e infraestructura tecnológica para empresas y organismos líderes que confían en nuestro respaldo.</p>
 
-        <div class="casos-grid">
+    <div class="casos-grid">
 
-            <div class="caso-card">
-                <div class="caso-header">
-                    <div class="caso-icono">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <span class="caso-badge">100% Cero Cortes</span>
+        <div class="caso-card">
+            <div class="caso-header">
+                <div class="caso-icono">
+                    <i class="fas fa-tools"></i>
                 </div>
-                
-                <h3>Industria Metalúrgica</h3>
-                
-                <div class="caso-info-list">
-                    <div class="caso-item">
-                        <strong>Problema:</strong> Infraestructura de red obsoleta y baja estabilidad en planta.
-                    </div>
-                    <div class="caso-item">
-                        <strong>Solución:</strong> Cableado estructurado Cat6, rack principal y enlaces de fibra óptica.
-                    </div>
-                    <div class="caso-item">
-                        <strong>Resultado:</strong> Red de alta disponibilidad, mayor velocidad de transferencia y una <span class="caso-metric">reducción total de fallas</span> operativas.
-                    </div>
+                <span class="caso-badge">Soporte Continuo</span>
+            </div>
+            
+            <div class="caso-logo-container">
+                <img src="img/marcas/Gestamp_Logo.png" alt="Logo Gestamp" class="caso-logo-img">
+            </div>
+            
+            <div class="caso-info-list">
+                <div class="caso-item">
+                    <strong>Desafío:</strong> Mantener la continuidad operativa y resolver incidencias de hardware/software en entornos de producción industrial exigentes.
+                </div>
+                <div class="caso-item">
+                    <strong>Solución:</strong> Servicio de soporte técnico especializado, mantenimiento preventivo y diagnóstico rápido de fallas en terminales críticas.
+                </div>
+                <div class="caso-item">
+                    <strong>Resultado:</strong> Optimización de tiempos de respuesta y <span class="caso-metric">alta disponibilidad</span> en los puestos de trabajo del sector corporativo y de planta.
                 </div>
             </div>
+        </div>
 
-            <div class="caso-card">
-                <div class="caso-header">
-                    <div class="caso-icono">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <span class="caso-badge">Cobertura Total</span>
+        <div class="caso-card">
+            <div class="caso-header">
+                <div class="caso-icono">
+                    <i class="fas fa-network-wired"></i>
                 </div>
-                
-                <h3>Empresa Administrativa</h3>
-                
-                <div class="caso-info-list">
-                    <div class="caso-item">
-                        <strong>Problema:</strong> Falta de control de accesos del personal y cobertura WiFi deficiente.
-                    </div>
-                    <div class="caso-item">
-                        <strong>Solución:</strong> Sistema biométrico centralizado, WiFi empresarial y segmentación de red segura.
-                    </div>
-                    <div class="caso-item">
-                        <strong>Resultado:</strong> Control de seguridad estricto y conectividad sin fisuras con <span class="caso-metric">cobertura en el 100%</span> de las oficinas.
-                    </div>
+                <span class="caso-badge">Infraestructura Alta Velocidad</span>
+            </div>
+            
+            <div class="caso-logo-container">
+                <img src="img/marcas/NOBIS_logo.png" alt="Logo Nobis" class="caso-logo-img">
+            </div>
+            
+            <div class="caso-info-list">
+                <div class="caso-item">
+                    <strong>Desafío:</strong> Centralizar y asegurar la conectividad interna de datos entre terminales médicas y administrativas con cero pérdidas de paquetes.
+                </div>
+                <div class="caso-item">
+                    <strong>Solución:</strong> Despliegue de cableado estructurado certificado, ordenamiento de racks y configuración de electrónica de red de nivel empresarial.
+                </div>
+                <div class="caso-item">
+                    <strong>Resultado:</strong> Implementación de una <span class="caso-metric">red robusta y escalable</span> que garantiza el flujo rápido de historias clínicas e información sensible.
                 </div>
             </div>
+        </div>
 
-            <div class="caso-card">
-                <div class="caso-header">
-                    <div class="caso-icono">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <span class="caso-badge">Monitoreo 24/7</span>
+        <div class="caso-card">
+            <div class="caso-header">
+                <div class="caso-icono">
+                    <i class="fas fa-landmark"></i>
                 </div>
-                
-                <h3>Institución Educativa</h3>
-                
-                <div class="caso-info-list">
-                    <div class="caso-item">
-                        <strong>Problema:</strong> Necesidad urgente de videovigilancia perimetral y monitoreo centralizado.
-                    </div>
-                    <div class="caso-item">
-                        <strong>Solución:</strong> Instalación de cámaras IP de alta definición, grabación centralizada y acceso remoto.
-                    </div>
-                    <div class="caso-item">
-                        <strong>Resultado:</strong> Supervisión integral en tiempo real y una notable <span class="caso-metric">mejora en la seguridad</span> del alumnado e institución.
-                    </div>
+                <span class="caso-badge">Conectividad Institucional</span>
+            </div>
+            
+            <div class="caso-logo-container">
+                <img src="img/marcas/CbaCultura_logo.png" alt="Logo Cordoba Cultura" class="caso-logo-img">
+            </div>
+            
+            <div class="caso-info-list">
+                <div class="caso-item">
+                    <strong>Desafío:</strong> Proveer una infraestructura de red estable y adaptada a espacios públicos y administrativos para la gestión de proyectos culturales.
+                </div>
+                <div class="caso-item">
+                    <strong>Solución:</strong> Diseño e instalación de enlaces de red, optimización de redes existentes y soporte de conectividad integral.
+                </div>
+                <div class="caso-item">
+                    <strong>Resultado:</strong> Estabilización del sistema de comunicaciones con <span class="caso-metric">cobertura eficiente</span> para el desarrollo de tareas institucionales diarias.
                 </div>
             </div>
+        </div>
 
     </div> </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-        <h2 class="titulo-seccion">Preguntas Frecuentes</h2>
-        <div class="faq-container">
-            
-            <div class="faq-item">
-                <div class="faq-pregunta">
-                    <h3>¿Realizan relevamientos técnicos sin cargo?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-respuesta">
-                    <p>Sí, realizamos visitas técnicas y relevamientos en empresas y organizaciones para evaluar la infraestructura actual y presupuestar la solución óptima sin compromiso.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-pregunta">
-                    <h3>¿Ofrecen abonos de mantenimiento mensual?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-respuesta">
-                    <p>Contamos con planes de soporte preventivo y correctivo 24/7 para industrias y comercios, garantizando tiempos de respuesta mínimos ante cualquier contingencia de conectividad o seguridad.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-pregunta">
-                    <h3>¿Los trabajos e instalaciones tienen garantía?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-respuesta">
-                    <p>Absolutamente. Todas nuestras instalaciones de cableado, fibra y equipamiento electrónico cuentan con garantía respaldada por certificaciones oficiales y materiales de primera marca.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
 
     <!-- CONTACTO -->
   <section id="contacto">
@@ -654,10 +616,11 @@
 
     <!-- FOOTER (Ahora correctamente dentro del body) -->
     <footer>
-        <img src="img/LOGO.png" alt="Logo Grupo TSC">
-        <h3>Grupo TSC</h3>
-        <p>Tecnología, Seguridad y Conectividad</p>
-        <p>© 2026 Grupo TSC. Todos los derechos reservados.</p>
+    <div class="logo-footer-container">
+        <img src="img/TSC_Logo.png" alt="Grupo TSC" class="logo-footer-img">
+    </div>
+
+    <p>&copy; 2026 Grupo TSC. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Botón flotante de WhatsApp e iconos -->
