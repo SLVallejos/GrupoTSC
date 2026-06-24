@@ -1590,6 +1590,27 @@ body.menu-open { overflow: hidden; }
     margin-bottom: 16px;
 }
 
+.casos-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    background: var(--color-acento);
+    color: var(--color-principal);
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.casos-cta .btn:hover {
+    background: #0ea5e9;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(56, 189, 248, 0.22);
+}
+
 @media (max-width: 991px) {
     .proyectos-highlight {
         grid-template-columns: 1fr;
