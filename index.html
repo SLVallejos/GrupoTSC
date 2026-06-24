@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Grupo TSC brinda soluciones de conectividad, CCTV, control de acceso, fibra óptica, cableado estructurado y soporte técnico para empresas e industrias.">
     <title>Grupo TSC | Tecnología, Seguridad y Conectividad</title>
@@ -13,6 +14,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#060d1a">
+    <link rel="canonical" href="https://leovallejos1331.github.io/GrupoTSC/">
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
@@ -33,7 +35,9 @@
 
     <link rel="preload" href="img/TSC_Logo.webp" as="image">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
     <!-- Datos estructurados para SEO local -->
     <script type="application/ld+json">
@@ -124,11 +128,12 @@
 </head>
 <body>
 
+    <a href="#inicio" class="skip-link">Saltar al contenido principal</a>
     <header>
     <nav class="navbar">
 
         <a href="#inicio" class="brand" aria-label="Grupo TSC - ir al inicio">
-            <img src="img/TSC_Logo.webp" alt="Grupo TSC" class="brand-logo">
+            <img src="img/TSC_Logo.webp" alt="Grupo TSC" class="brand-logo" fetchpriority="high" decoding="async">
             <span class="brand-text">Grupo TSC</span>
         </a>
 
@@ -149,25 +154,25 @@
     </header>
 
     <!-- INICIO -->
-    <section id="inicio" class="hero">
+    <section id="inicio" class="hero" aria-label="Inicio">
     <div class="hero-content">
 
         <span class="hero-badge"><i class="fas fa-shield-halved"></i> Infraestructura, seguridad y conectividad para empresas</span>
 
         <div class="logo-hero-container">
-            <img src="img/TSC_Logo.webp" alt="Grupo TSC" class="logo-hero-img">
+            <img src="img/TSC_Logo.webp" alt="Grupo TSC" class="logo-hero-img" fetchpriority="high" decoding="async">
         </div>
 
-        <h1>Soluciones Tecnológicas para Empresas</h1>
+        <h1>Infraestructura tecnológica que su empresa necesita</h1>
 
         <p>
-            Infraestructura de redes, videovigilancia,
-            control de acceso, cableado estructurado
-            y soporte especializado.
+            Diseñamos e instalamos redes, videovigilancia, control de acceso
+            y cableado estructurado para empresas e industrias en Córdoba.
+            Respaldo técnico real, antes y después de cada proyecto.
         </p>
 
         <div class="hero-buttons">
-            <a href="#contacto" class="btn">Solicitar Cotización</a>
+            <a href="#contacto" class="btn">Solicitar Cotización Gratis</a>
             <a href="#servicios" class="btn-sec">Ver Servicios</a>
         </div>
 
@@ -180,15 +185,15 @@
 
         <div class="hero-stats">
             <div>
-                <h3>+100</h3>
+                <h3 class="contador" data-target="100" data-prefix="+" data-suffix="">+100</h3>
                 <span>Proyectos ejecutados</span>
             </div>
             <div>
-                <h3>+50</h3>
+                <h3 class="contador" data-target="50" data-prefix="+" data-suffix="">+50</h3>
                 <span>Clientes atendidos</span>
             </div>
             <div>
-                <h3>24/7</h3>
+                <h3 class="contador" data-target="24" data-prefix="" data-suffix="/7">24/7</h3>
                 <span>Soporte técnico</span>
             </div>
         </div>
@@ -197,7 +202,7 @@
     </section>
 
     <!-- NOSOTROS -->
-    <section id="nosotros">
+    <section id="nosotros" aria-label="Nosotros">
         <h2>Soluciones Integrales en Conectividad, Seguridad e Infraestructura Tecnológica</h2>
         <p>
             Diseñamos, implementamos y mantenemos soluciones tecnológicas
@@ -207,18 +212,20 @@
         </p>
         <div class="cards">
             <div class="card">
+                <div class="icono"><i class="fas fa-bullseye"></i></div>
                 <h3>Misión</h3>
-                <p>Brindar soluciones tecnológicas innovadoras que mejoren la conectividad y seguridad de nuestros clientes.</p>
+                <p>Brindar soluciones tecnológicas a medida que garanticen conectividad estable, seguridad efectiva y continuidad operativa para cada cliente.</p>
             </div>
             <div class="card">
+                <div class="icono"><i class="fas fa-rocket"></i></div>
                 <h3>Visión</h3>
-                <p>Ser una empresa referente en tecnología, conectividad y seguridad a nivel regional.</p>
+                <p>Consolidarnos como el socio tecnológico de referencia en Córdoba, acompañando el crecimiento de empresas e industrias con infraestructura escalable.</p>
             </div>
         </div>
     </section>
 
     <!-- SERVICIOS -->
-    <section id="servicios">
+    <section id="servicios" aria-label="Servicios">
         <h2 class="titulo-seccion">Nuestros Servicios</h2>
         <div class="cards">
             <div class="card">
@@ -226,86 +233,89 @@
                     <i class="fas fa-network-wired"></i>
                 </div>
                 <h3>Conectividad</h3>
-                <p>Redes LAN, WAN, WiFi Empresarial, Fibra Óptica y Cableado Estructurado.</p>
+                <p>Redes LAN/WAN, WiFi empresarial de alta densidad, fibra óptica y cableado estructurado certificado Cat6/Cat6A para entornos de producción e industria.</p>
             </div>
             <div class="card">
                 <div class="icono">
                     <i class="fas fa-shield-halved"></i>
                 </div>
                 <h3>Seguridad Electrónica</h3>
-                <p>CCTV, Alarmas, Monitoreo, Control de Acceso y Protección Perimetral.</p>
+                <p>Sistemas CCTV IP de alta resolución, control de acceso biométrico, alarmas perimetrales y monitoreo remoto 24/7 con gestión centralizada.</p>
             </div>
             <div class="card">
                 <div class="icono">
                     <i class="fas fa-headset"></i>
                 </div>
                 <h3>Soporte Técnico</h3>
-                <p>Mantenimiento preventivo, correctivo y asistencia especializada.</p>
+                <p>Mantenimiento preventivo y correctivo, diagnóstico remoto y guardias técnicas de emergencia para clientes con abono activo.</p>
             </div>
         </div>
     </section>
 
     <!-- POR QUÉ ELEGIRNOS -->
-    <section id="porque">
+    <section id="porque" aria-label="Por qué elegirnos">
         <h2 class="titulo-seccion">¿Por qué elegir Grupo TSC?</h2>
         <div class="cards">
             <div class="card">
-                <h3>Experiencia</h3>
-                <p>Soluciones adaptadas a cada cliente y necesidad.</p>
+                <div class="icono"><i class="fas fa-medal"></i></div>
+                <h3>Experiencia comprobada</h3>
+                <p>Más de 100 proyectos ejecutados en Córdoba para empresas, industrias e instituciones. Cada solución se diseña a medida del cliente, no de un catálogo.</p>
             </div>
             <div class="card">
-                <h3>Tecnología</h3>
-                <p>Equipamiento de última generación.</p>
+                <div class="icono"><i class="fas fa-microchip"></i></div>
+                <h3>Tecnología de primer nivel</h3>
+                <p>Trabajamos con marcas líderes como Cisco, Hikvision, Ubiquiti y Furukawa. Equipamiento con garantía oficial y soporte post-instalación incluido.</p>
             </div>
             <div class="card">
-                <h3>Soporte</h3>
-                <p>Atención técnica especializada y seguimiento.</p>
+                <div class="icono"><i class="fas fa-headset"></i></div>
+                <h3>Soporte real y continuo</h3>
+                <p>No desaparecemos después de instalar. Ofrecemos mantenimiento preventivo, respuesta rápida ante fallas y guardias técnicas 24/7 para abonados.</p>
             </div>
         </div>
     </section>
 
     <!-- ESTADÍSTICAS -->
-    <section class="estadisticas">
+    <section class="estadisticas" aria-label="Estadísticas">
         <div class="stat">
-            <h2>+100</h2>
+            <span class="stat-num">+100</span>
             <p>Proyectos Realizados</p>
         </div>
         <div class="stat">
-            <h2>+50</h2>
+            <span class="stat-num">+50</span>
             <p>Clientes Satisfechos</p>
         </div>
         <div class="stat">
-            <h2>24/7</h2>
+            <span class="stat-num">24/7</span>
             <p>Soporte Técnico</p>
         </div>
     </section>
 
-    <section id="marcas">
+    <section id="marcas" aria-label="Marcas que implementamos">
         <h2 class="titulo-seccion">Tecnología que Implementamos</h2>
         
         <div class="carrusel-marcas">
             <div class="carrusel-track">
                 
-                <div class="marca-logo"><img src="img/marcas/Hik-Logo.webp" alt="Hikvision"></div>
-                <div class="marca-logo"><img src="img/marcas/Dahua-Logo.webp" alt="Dahua"></div>
-                <div class="marca-logo"><img src="img/marcas/Cisco-Logo.webp" alt="Cisco"></div>
-                <div class="marca-logo"><img src="img/marcas/Ubiquiti_Logo.webp" alt="Ubiquiti"></div>
-                <div class="marca-logo"><img src="img/marcas/Furukawa-Logo.webp" alt="Furukawa"></div>
-                <div class="marca-logo"><img src="img/marcas/Logomarca_Intelbras.webp" alt="Intelbras"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Hik-Logo.webp" alt="Hikvision"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Dahua-Logo.webp" alt="Dahua"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Cisco-Logo.webp" alt="Cisco"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Ubiquiti_Logo.webp" alt="Ubiquiti"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Furukawa-Logo.webp" alt="Furukawa"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Logomarca_Intelbras.webp" alt="Intelbras"></div>
                 
-                <div class="marca-logo"><img src="img/marcas/Hik-Logo.webp" alt="Hikvision"></div>
-                <div class="marca-logo"><img src="img/marcas/Dahua-Logo.webp" alt="Dahua"></div>
-                <div class="marca-logo"><img src="img/marcas/Cisco-Logo.webp" alt="Cisco"></div>
-                <div class="marca-logo"><img src="img/marcas/Ubiquiti_Logo.webp" alt="Ubiquiti"></div>
-                <div class="marca-logo"><img src="img/marcas/Furukawa-Logo.webp" alt="Furukawa"></div>
-                <div class="marca-logo"><img src="img/marcas/Logomarca_Intelbras.webp" alt="Intelbras"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Hik-Logo.webp" alt="Hikvision"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Dahua-Logo.webp" alt="Dahua"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Cisco-Logo.webp" alt="Cisco"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Ubiquiti_Logo.webp" alt="Ubiquiti"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Furukawa-Logo.webp" alt="Furukawa"></div>
+                <div class="marca-logo"><img loading="lazy" decoding="async" src="img/marcas/Logomarca_Intelbras.webp" alt="Intelbras"></div>
 
             </div>
         </div>
     </section>
 
     <!-- TECNOLOGÍAS Y SOLUCIONES -->
-    <section id="tecnologias">
+    <section id="tecnologias" aria-label="Tecnologías y soluciones">
         <h2 class="titulo-seccion">Tecnologías y Soluciones</h2>
         <div class="tecnologias-grid">
             <div class="tech"><i class="fas fa-video"></i> CCTV</div>
@@ -318,7 +328,7 @@
     </section>
 
     <!-- PROYECTOS -->
-    <section id="proyectos" class="section-showcase">
+    <section id="proyectos" class="section-showcase" aria-label="Proyectos realizados">
         <div class="section-heading centered">
             <span class="section-kicker">Implementaciones reales</span>
             <h2 class="titulo-seccion">Proyectos Realizados</h2>
@@ -346,7 +356,7 @@
 
                     <div class="proyecto-card">
                         <div class="proyecto-img-container">
-                            <img src="img/proyectos/server-racks.webp" alt="Instalación de racks y servidores" loading="lazy">
+                            <img src="img/proyectos/server-racks.webp" alt="Instalación de racks y servidores" loading="lazy" decoding="async">
                             <div class="proyecto-tag">Redes y Conectividad</div>
                         </div>
                         <div class="proyecto-detalle">
@@ -357,7 +367,7 @@
 
                     <div class="proyecto-card">
                         <div class="proyecto-img-container">
-                            <img src="img/proyectos/Instalacion-de-Camaras-de-Seguridad.webp" alt="Cámaras de seguridad en empresa" loading="lazy">
+                            <img src="img/proyectos/Instalacion-de-Camaras-de-Seguridad.webp" alt="Cámaras de seguridad en empresa" loading="lazy" decoding="async">
                             <div class="proyecto-tag">CCTV</div>
                         </div>
                         <div class="proyecto-detalle">
@@ -368,7 +378,7 @@
 
                     <div class="proyecto-card">
                         <div class="proyecto-img-container">
-                            <img src="img/proyectos/tendido_de_RED.webp" alt="Tendido de Red" loading="lazy">
+                            <img src="img/proyectos/tendido_de_RED.webp" alt="Tendido de Red" loading="lazy" decoding="async">
                             <div class="proyecto-tag">Fibra Óptica</div>
                         </div>
                         <div class="proyecto-detalle">
@@ -387,7 +397,7 @@
     </section>
 
     <!-- SOLUCIONES ESPECIALIZADAS -->
-  <section id="especializados" class="section-showcase">
+  <section id="especializados" class="section-showcase" aria-label="Soluciones especializadas">
     <div class="section-heading centered">
     <span class="section-kicker">Portafolio de soluciones</span>
     <h2 class="titulo-seccion">Soluciones Especializadas</h2>
@@ -405,7 +415,7 @@
         <div class="soluciones-menu">
 
             <button
-                class="tab-btn active"
+                class="tab-btn active" role="tab" aria-selected="true"
                 data-tab="cableado"
                 aria-label="Cableado Estructurado">
                 <i class="fas fa-network-wired"></i>
@@ -480,7 +490,7 @@
                         <img
                             src="img/soluciones/cableado-estructurado.webp"
                             alt="Cableado Estructurado Profesional"
-                            loading="lazy">
+                            loading="lazy" decoding="async">
                     </div>
 
                 </div>
@@ -509,7 +519,7 @@
                         <img
                             src="img/soluciones/Fibra-Optica.webp"
                             alt="Instalación de Fibra Óptica"
-                            loading="lazy">
+                            loading="lazy" decoding="async">
                     </div>
 
                 </div>
@@ -538,7 +548,7 @@
                         <img
                             src="img/soluciones/Wi-Fi.webp"
                             alt="WiFi Empresarial"
-                            loading="lazy">
+                            loading="lazy" decoding="async">
                     </div>
 
                 </div>
@@ -567,7 +577,7 @@
                         <img
                             src="img/soluciones/Camaras-CCTV.webp"
                             alt="Sistema de CCTV"
-                            loading="lazy">
+                            loading="lazy" decoding="async">
                     </div>
 
                 </div>
@@ -596,7 +606,7 @@
                         <img
                             src="img/soluciones/Control-De-Acceso.webp"
                             alt="Sistema de Control de Acceso"
-                            loading="lazy">
+                            loading="lazy" decoding="async">
                     </div>
 
                 </div>
@@ -625,7 +635,7 @@
                         <img
                             src="img/soluciones/Telefonia-IP.webp"
                             alt="Telefonía IP Corporativa"
-                            loading="lazy">
+                            loading="lazy" decoding="async">
                     </div>
 
                 </div>
@@ -636,7 +646,7 @@
 </section>
 
     
-    <section id="casos-exito" class="section-showcase">
+    <section id="casos-exito" class="section-showcase" aria-label="Casos de éxito">
     <div class="section-heading centered">
         <span class="section-kicker">Confianza y resultados</span>
         <h2 class="titulo-seccion">Casos de Éxito</h2>
@@ -654,7 +664,7 @@
             </div>
             
             <div class="caso-logo-container">
-                <img src="img/marcas/Gestamp_Logo.webp" alt="Logo Gestamp" class="caso-logo-img">
+                <img loading="lazy" decoding="async" src="img/marcas/Gestamp_Logo.webp" alt="Logo Gestamp" class="caso-logo-img">
             </div>
             
             <div class="caso-info-list">
@@ -679,7 +689,7 @@
             </div>
             
             <div class="caso-logo-container">
-                <img src="img/marcas/NOBIS_logo.webp" alt="Logo Nobis" class="caso-logo-img">
+                <img loading="lazy" decoding="async" src="img/marcas/NOBIS_logo.webp" alt="Logo Nobis" class="caso-logo-img">
             </div>
             
             <div class="caso-info-list">
@@ -704,7 +714,7 @@
             </div>
             
             <div class="caso-logo-container">
-                <img src="img/marcas/CbaCultura_logo.webp" alt="Logo Cordoba Cultura" class="caso-logo-img">
+                <img loading="lazy" decoding="async" src="img/marcas/CbaCultura_logo.webp" alt="Logo Cordoba Cultura" class="caso-logo-img">
             </div>
             
             <div class="caso-info-list">
@@ -728,13 +738,13 @@
 </section>
 
     <!-- PREGUNTAS FRECUENTES -->
-    <section id="faq">
+    <section id="faq" aria-label="Preguntas frecuentes">
         <h2 class="titulo-seccion">Preguntas Frecuentes</h2>
         <p class="subtitulo-seccion">Resolvemos las dudas más comunes antes de que solicites tu cotización.</p>
 
-        <div class="faq-container">
+        <div class="faq-container" role="list">
 
-            <div class="faq-item">
+            <div class="faq-item" role="listitem">
                 <div class="faq-pregunta">
                     <h3>¿En qué zonas trabajan?</h3>
                     <i class="fas fa-chevron-down"></i>
@@ -744,7 +754,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" role="listitem">
                 <div class="faq-pregunta">
                     <h3>¿Cuánto tarda una instalación?</h3>
                     <i class="fas fa-chevron-down"></i>
@@ -754,7 +764,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" role="listitem">
                 <div class="faq-pregunta">
                     <h3>¿Qué garantía tienen los equipos y la instalación?</h3>
                     <i class="fas fa-chevron-down"></i>
@@ -764,7 +774,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" role="listitem">
                 <div class="faq-pregunta">
                     <h3>¿Ofrecen mantenimiento o soporte después de la instalación?</h3>
                     <i class="fas fa-chevron-down"></i>
@@ -774,7 +784,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" role="listitem">
                 <div class="faq-pregunta">
                     <h3>¿Cómo cotizan un proyecto?</h3>
                     <i class="fas fa-chevron-down"></i>
@@ -784,7 +794,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" role="listitem">
                 <div class="faq-pregunta">
                     <h3>¿Trabajan con empresas pequeñas o solo con grandes industrias?</h3>
                     <i class="fas fa-chevron-down"></i>
@@ -798,7 +808,7 @@
     </section>
 
     <!-- CONTACTO -->
-  <section id="contacto">
+  <section id="contacto" aria-label="Contacto">
         <h2 class="titulo-seccion">Contacto</h2>
         
         <div class="contacto-container">
@@ -844,9 +854,11 @@
 
                     <input type="hidden" name="_subject" value="Nueva consulta desde Grupo TSC">
 
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+                    <label for="nombre" class="sr-only">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required autocomplete="name">
 
-                    <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                    <label for="email" class="sr-only">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico" required autocomplete="email">
 
                     <input
                         type="tel"
@@ -858,6 +870,7 @@
                         pattern="^[0-9+\-\s()]{8,20}$"
                         title="Ingresá un teléfono válido. Ejemplo: 3511234567 o +54 351 1234567">
 
+                    <label for="mensaje" class="sr-only">Mensaje</label>
                     <textarea id="mensaje" name="mensaje" placeholder="Escriba aquí los detalles de su consulta..." required></textarea>
 
                     <button type="submit">Enviar Consulta</button>
@@ -871,18 +884,19 @@
     </section>
 
     <!-- FOOTER (Ahora correctamente dentro del body) -->
-    <footer>
+    <footer role="contentinfo">
     <div class="logo-footer-container">
-        <img src="img/TSC_Logo.webp" alt="Grupo TSC" class="logo-footer-img">
+        <img src="img/TSC_Logo.webp" alt="Grupo TSC" class="logo-footer-img" loading="lazy" decoding="async">
     </div>
 
-    <p>&copy; 2026 Grupo TSC. Todos los derechos reservados.</p>
+    <p>&copy; <span id="footer-year">2026</span> Grupo TSC &mdash; Tecnología, Seguridad y Conectividad. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Botón flotante de WhatsApp e iconos -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
     <a href="https://wa.me/5493525536785?text=Hola%20Grupo%20TSC,%20vi%20su%20sitio%20web%20y%20quisiera%20asesoramiento."
         class="whatsapp"
+        aria-label="Contactar por WhatsApp"
         target="_blank"
         rel="noopener noreferrer">
             <i class="fab fa-whatsapp"></i>
