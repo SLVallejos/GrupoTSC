@@ -1,6 +1,10 @@
 /* ==========================================================================
    1. CONFIGURACIÓN GENERAL Y VARIABLES
    ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 :root {
     --color-principal: #060d1a;    /* Azul profundo neón */
     --color-secundario: #0b1726;   /* Azul medio para tarjetas */
@@ -1014,13 +1018,17 @@ header {
    ========================================================================== */
 .contacto-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
     background-color: rgba(11, 23, 38, 0.6);
     backdrop-filter: blur(6px);
     padding: 40px;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.contacto-info {
+    color: var(--color-texto);
 }
 
 .contacto-info h3 {
@@ -1035,6 +1043,11 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
+    color: var(--color-texto);
+}
+
+.contacto-info p strong {
+    color: var(--color-texto);
 }
 
 .contacto-info i { color: var(--color-acento); }
@@ -1074,6 +1087,7 @@ header {
 
 .formulario input, .formulario textarea {
     width: 100%;
+    box-sizing: border-box;
     padding: 12px;
     background-color: rgba(6, 13, 26, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1340,9 +1354,24 @@ body.menu-open { overflow: hidden; }
     color: #fecaca;
 }
 .mensaje-exito.mostrar, .mensaje-error.mostrar { opacity: 1; transform: translateY(0); }
+@media (max-width: 900px) {
+  .contacto-container {
+    grid-template-columns: 1fr;
+    padding: 28px;
+    gap: 28px;
+  }
+}
 @media (max-width: 768px) {
   .hero { min-height: auto; padding-top: 120px; }
-  .contacto-container { padding: 24px; }
+  .contacto-container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 24px;
+  }
+  #contacto {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
 
 
@@ -1595,19 +1624,18 @@ body.menu-open { overflow: hidden; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 52px;
-    padding: 14px 28px;
+    width: auto;
+    padding: 14px 36px;
     border-radius: 10px;
     background: var(--color-acento);
-    color: #ffffff;
+    color: var(--color-principal);
     font-weight: 700;
     font-size: 1rem;
-    line-height: 1.2;
+    line-height: 1.3;
     text-decoration: none;
     border: none;
-    white-space: normal;
+    white-space: nowrap;
     text-align: center;
-    max-width: 100%;
 }
 
 .casos-cta .btn:hover {
@@ -1705,12 +1733,11 @@ body.menu-open { overflow: hidden; }
     }
 
     .casos-cta .btn {
-        width: 100%;
+        max-width: 320px;
+        width: 90%;
         justify-content: center;
-        min-height: auto;
-        padding: 13px 16px;
+        padding: 13px 20px;
         font-size: 0.95rem;
-        line-height: 1.35;
         white-space: normal;
         text-align: center;
     }

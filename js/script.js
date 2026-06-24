@@ -14,9 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Secciones que NO deben tener animación de reveal (muy largas en mobile)
+    const seccionesExcluidas = ['contacto', 'faq'];
+
     const seccionesAAnimar = document.querySelectorAll("section");
     seccionesAAnimar.forEach((sec, index) => {
-        if (index > 0) sec.classList.add("reveal");
+        if (index > 0 && !seccionesExcluidas.includes(sec.id)) {
+            sec.classList.add("reveal");
+        }
     });
 
     const observer = new IntersectionObserver((entries, observerRef) => {
@@ -26,10 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 observerRef.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
 
     seccionesAAnimar.forEach((seccion, index) => {
-        if (index > 0) observer.observe(seccion);
+        if (index > 0 && !seccionesExcluidas.includes(seccion.id)) {
+            observer.observe(seccion);
+        }
     });
 
     const track = document.querySelector('.carrusel-proyectos-track');
