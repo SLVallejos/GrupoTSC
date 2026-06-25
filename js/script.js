@@ -271,6 +271,51 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ── TECNOLOGÍAS TABS (con aria-selected) ────────────────────────────────
+    const techBtns = document.querySelectorAll('.tech-tab-btn');
+    const techPanels = document.querySelectorAll('.tech-tab-panel');
+    if (techBtns.length && techPanels.length) {
+        techBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                techBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+                techPanels.forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+                const panel = document.getElementById(btn.dataset.techtab);
+                if (panel) panel.classList.add('active');
+            });
+        });
+    }
+
+    // ── M-05: RESALTAR SECCIÓN ACTIVA EN MENÚ ───────────────────────────────
+    const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+    if (navLinks.length) {
+        const seccionesNav = document.querySelectorAll('section[id]');
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    navLinks.forEach(link => {
+                        link.classList.toggle('nav-active', link.getAttribute('href') === `#${id}`);
+                    });
+                }
+            });
+        }, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
+        seccionesNav.forEach(sec => navObserver.observe(sec));
+    }
+
+    // ── B-02: PAUSAR CARRUSEL DE MARCAS EN TOUCH ────────────────────────────
+    const carruselMarcas = document.querySelector('.carrusel-marcas');
+    const carruselTrack = document.querySelector('.carrusel-track');
+    if (carruselMarcas && carruselTrack) {
+        carruselMarcas.addEventListener('touchstart', () => {
+            carruselTrack.style.animationPlayState = 'paused';
+        }, { passive: true });
+        carruselMarcas.addEventListener('touchend', () => {
+            carruselTrack.style.animationPlayState = 'running';
+        }, { passive: true });
+    }
+
     // ── CONTADORES ANIMADOS ──────────────────────────────────────────────────
     const contadores = document.querySelectorAll('.contador');
     if (contadores.length > 0) {
