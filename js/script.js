@@ -251,6 +251,29 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     actualizarHeader();
     window.addEventListener('scroll', actualizarHeader, { passive: true });
+
+    // ── M-06: ALTURA DINÁMICA DEL HEADER PARA SCROLL PRECISO ────────────────
+    // El header cambia de alto entre mobile y desktop (y puede variar si se
+    // edita el diseño más adelante). En vez de un valor fijo en CSS, medimos
+    // su altura real y la exponemos como variable --header-height, que el
+    // CSS usa en scroll-padding-top / scroll-margin-top. Así el scroll del
+    // menú (hamburguesa o desktop) siempre termina justo debajo del header,
+    // sin importar la resolución.
+    const actualizarAlturaHeader = () => {
+        if (!header) return;
+        const alturaReal = header.getBoundingClientRect().height;
+        document.documentElement.style.setProperty('--header-height', `${Math.ceil(alturaReal)}px`);
+    };
+    actualizarAlturaHeader();
+    window.addEventListener('resize', actualizarAlturaHeader, { passive: true });
+    window.addEventListener('orientationchange', actualizarAlturaHeader);
+    // Recalcular tras la carga de fuentes/imágenes, por si el header cambia de alto
+    // (p. ej. el texto de la marca pasa a dos líneas en algunos anchos intermedios).
+    window.addEventListener('load', actualizarAlturaHeader);
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(actualizarAlturaHeader);
+    }
+
     const menuToggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.menu');
     const menuLinks = document.querySelectorAll('.menu a');
@@ -266,8 +289,34 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.classList.toggle('menu-open', abierto);
         };
         menuToggle.addEventListener('click', toggleMenu);
+
+        // Al elegir una opción del menú: cerrar el menú PRIMERO (sincrónico) y
+        // recién después disparar el scroll. Si ambas cosas ocurren en el mismo
+        // tick, el navegador calcula el destino del scroll mientras el menú
+        // móvil (position:absolute) todavía ocupa espacio, lo que desplaza el
+        // punto final y deja la sección parcialmente tapada por el header.
+        // Solo aplica este flujo manual para enlaces internos (#id); enlaces
+        // externos o sin href de anclaje se comportan como siempre.
         menuLinks.forEach((link) => {
-            link.addEventListener('click', cerrarMenu);
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href') || '';
+                const esAncla = href.startsWith('#') && href.length > 1;
+                const destino = esAncla ? document.getElementById(href.slice(1)) : null;
+
+                cerrarMenu();
+
+                if (destino) {
+                    e.preventDefault();
+                    // Esperar un frame para que el menú ya esté colapsado en el
+                    // layout antes de pedirle al navegador que calcule el scroll.
+                    requestAnimationFrame(() => {
+                        destino.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Mantiene la URL sincronizada (deep-link, botón "atrás") sin
+                        // disparar un segundo salto de scroll instantáneo del navegador.
+                        history.pushState(null, '', href);
+                    });
+                }
+            });
         });
     }
 
@@ -316,33 +365,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }, { passive: true });
     }
 
-    // ── CONTADORES ANIMADOS ──────────────────────────────────────────────────
+    // ── CONTADORES ANIMADOS (count-up con requestAnimationFrame) ────────────
     const contadores = document.querySelectorAll('.contador');
     if (contadores.length > 0) {
+        const prefiereMovimientoReducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // Easing: arranca rápido, termina suave (sensación "moderna" de conteo)
+        const easing = (t) => 1 - Math.pow(1 - t, 3);
+
         const animarContador = (el) => {
-            const target = parseInt(el.dataset.target);
+            const target = parseFloat(el.dataset.target);
+            if (!isFinite(target)) return;
             const prefix = el.dataset.prefix || '';
             const suffix = el.dataset.suffix || '';
-            const duracion = 1800; // ms
-            const pasos = 60;
-            const incremento = target / pasos;
-            let actual = 0;
-            let paso = 0;
-            // Easing: empieza rápido, termina lento
-            const easing = (t) => 1 - Math.pow(1 - t, 3);
-            const intervalo = setInterval(() => {
-                paso++;
-                const progreso = easing(paso / pasos);
-                actual = Math.round(progreso * target);
-                el.textContent = prefix + actual + suffix;
-                if (paso >= pasos) {
-                    el.textContent = prefix + target + suffix;
-                    clearInterval(intervalo);
+            const decimales = (el.dataset.target.split('.')[1] || '').length;
+
+            if (prefiereMovimientoReducido) {
+                el.textContent = prefix + target.toFixed(decimales) + suffix;
+                return;
+            }
+
+            const duracion = 1800; // ms — dentro del rango pedido (1-2s)
+            let inicio = null;
+
+            const frame = (timestamp) => {
+                if (inicio === null) inicio = timestamp;
+                const transcurrido = timestamp - inicio;
+                const progreso = Math.min(transcurrido / duracion, 1);
+                const valorActual = easing(progreso) * target;
+                el.textContent = prefix + valorActual.toFixed(decimales) + suffix;
+
+                if (progreso < 1) {
+                    requestAnimationFrame(frame);
+                } else {
+                    // Fijar el valor final exacto, sin desvíos de redondeo
+                    el.textContent = prefix + target.toFixed(decimales) + suffix;
                 }
-            }, duracion / pasos);
+            };
+
+            requestAnimationFrame(frame);
         };
 
-        // Disparar cuando el bloque de stats entra al viewport
+        // Disparar una sola vez cuando el bloque de stats entra al viewport
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
